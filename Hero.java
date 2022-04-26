@@ -88,10 +88,15 @@ public class Hero extends SmoothMover{
         if(isLevelPassed()){
             getWorld().getObjects(Counter.class).get(0).setValue(0);
             Level.updateLevel();
-            if(Level.getLevel() > 2)
+            if(Level.getLevel() > 2){
+                Greenfoot.playSound("win.wav");
                 Greenfoot.setWorld(new WinScreen());
-            else
-                Greenfoot.setWorld(new PreLevelScreen());            
+            }
+            else{
+                Greenfoot.playSound("level-passed.wav");
+                Greenfoot.setWorld(new PreLevelScreen());
+            }
+                            
         }
     }
     // Touching sand    

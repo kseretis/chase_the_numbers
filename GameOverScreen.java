@@ -1,28 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class GameOverScreen here.
+ * The screen that is being appeard when you lose
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis 
+ * @version 24/04/2022
  */
-public class GameOverScreen extends Screen
-{
-
-    /**
-     * Constructor for objects of class GameOverScreen.
-     * 
-     */
+public class GameOverScreen extends Screen{
+    // Constructor
     public GameOverScreen(){    
         super(); 
         Timer.restartTimer();
         Level.restartLevels();
     }
-    
+    // Act
     public void act(){
         if(Greenfoot.isKeyDown("space")){
             Greenfoot.setWorld(new Level());
-        }
-            
+        }  
     }
 }

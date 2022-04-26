@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=InitialScreen
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ InitialScreen\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ The\ initial\ screen\ of\ the\ game\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 24/04/2022\r\n
 comment1.params=
 comment1.target=InitialScreen()
 comment2.params=

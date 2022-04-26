@@ -1,18 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Screen here.
+ * A super class that holds the numbers of the screen size
  * 
  * @author Seretis Kleanthis 
- * @version (a version number or a date)
+ * @version 24/04/2022
  */
 public class Screen extends World{
     public static final int WIDTH = 800;
     public static final int HEIGHT = 800;
-    /**
-     * Constructor for objects of class Screen.
-     * 
-     */
+    // Constructor
     public Screen(){    
         super(WIDTH, HEIGHT, 1); 
     }

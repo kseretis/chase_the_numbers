@@ -1,25 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WinScreen here.
+ * The winning screen
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis 
+ * @version 24/04/2022
  */
 public class WinScreen extends Screen{
-
-    /**
-     * Constructor for objects of class WinScreen.
-     * 
-     */
-    public WinScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    // Constructor
+    public WinScreen(){    
         super();
         Timer.restartTimer();
         Level.restartLevels();
     }
-    
+    // Act
     public void act(){
         if(Greenfoot.isKeyDown("space"))
             Greenfoot.setWorld(new Level());

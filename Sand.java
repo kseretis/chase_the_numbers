@@ -1,15 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Walls here.
+ * Class for sand objects
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis 
+ * @version 24/04/2022
  */
 public class Sand extends Actor{
-    
+    // Constructor
     public Sand(){
-        GreenfootImage image = getImage();
-        image.scale(100, 70);
+        getImage().scale(100, 70);
     }
 }

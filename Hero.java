@@ -1,44 +1,42 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Hero here.
+ * A class based on Singleton pattern, created for the main character of the game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis 
+ * @version 24/04/2022
  */
 public class Hero extends SmoothMover{
     private static final int SPEED = 2;         //Normal speed
     private static final int SLOW_SPEED = 1;    //Sand speed
     private static Hero singleInstance = null;  //Hero instance
-    private Counter trophyCounter;              //Ballons counter
     private GreenfootImage image1;              //Images
     private GreenfootImage image2;              //Images
     private GreenfootImage image3;              //Images
     private GreenfootImage image4;              //Images
     private boolean goLeft;                     //Moving left(true). moving right(false)
-    
-    public Hero(){
-        // trophyCounter = getWorld().getObjects(Counter.class).get(0);
+    // Constructor
+    private Hero(){
         image1 = new GreenfootImage("Hero0.png");
         image2 = new GreenfootImage("Hero1.png");
         image3 = new GreenfootImage("Hero3.png");
         image4 = new GreenfootImage("Hero4.png");
         setImage(image1);
     }
-    
+    // Get instance of the hero
     public static Hero getInstance(){
         if(singleInstance == null)
             singleInstance = new Hero();
         return singleInstance;
     }
-    
+    // act
     public void act(){
         checkKeyPress();
         switchImages();
         lookForTrophy();
         startNextLevel();
     }
-    
+    // Check which key is being pressed
     public void checkKeyPress(){
         int dx = 0, dy = 0;
         
@@ -58,12 +56,12 @@ public class Hero extends SmoothMover{
         }
         moveCharacter(dx, dy);
     }
-    
+    // If a key is pressed the character moves
     public void moveCharacter(int x, int y){
         if(x != 0 || y != 0)
             setLocation(getX()+x, getY()+y);
     }
-    
+    // Images switching
     public void switchImages(){
         if(goLeft)
             if(getImage() == image3)
@@ -76,17 +74,16 @@ public class Hero extends SmoothMover{
             else
                 setImage(image1);
     }
-    
+    // Looking for ballons, if he finds one, he eat it
     public void lookForTrophy(){
         if(isTouching(Trophy.class)){
             removeTouching(Trophy.class);
             getWorld().getObjects(Counter.class).get(0).add(1);
-            // trophyCounter.add(1);
             Greenfoot.playSound("mixkit-arrow-whoosh-1491.wav");
-            Timer.getInstance().updateTime(3);
+            Timer.updateTime(3);
         }
     }
-    
+    // Start the next level
     public void startNextLevel(){
         if(isLevelPassed()){
             getWorld().getObjects(Counter.class).get(0).setValue(0);
@@ -97,17 +94,12 @@ public class Hero extends SmoothMover{
                 Greenfoot.setWorld(new PreLevelScreen());            
         }
     }
-    
-    public static int getSpeed(){
-        return SPEED;
-    }
-    
+    // Touching sand    
     public boolean isTouchingSand(){
         return isTouching(Sand.class) ? true : false;
     }
-    
+    // Level passed, based on ballons needed per level
     public boolean isLevelPassed(){
         return getWorld().getObjects(Counter.class).get(0).getValue() >= Level.getBallonsNeeded() ? true : false; 
     }
-    
 }

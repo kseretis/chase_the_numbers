@@ -9,23 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Level extends Screen{
     private static int level = 1;
     private static int ballonsNeeded = 5;
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    public Level()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    // Constructor
+    public Level(){    
         super(); 
         prepare();
     }
-    
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
+    // Prepare the level
     private void prepare(){
-        
         //Spawn sands
         Sand sand = new Sand();
         addObject(sand,627,656);
@@ -47,10 +37,8 @@ public class Level extends Screen{
         addObject(sand9,625,198);
         Sand sand10 = new Sand();
         addObject(sand10,370,758);
-        
         //Spawn ballons
         checkLevel();
-        
         //Create Hero, timer and counter instance
         Counter counter = new Counter();
         addObject(counter,69,66);
@@ -58,10 +46,10 @@ public class Level extends Screen{
         addObject(hero,750,753);
         Timer timer = Timer.getInstance();
         addObject(timer,70,34);
-        
+        //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
     }
-    
+    // Check the level and modifies the needed ballons
     public void checkLevel(){
         if(level == 1){
             ballonsNeeded = 5;
@@ -72,7 +60,7 @@ public class Level extends Screen{
             createNewballons(ballonsNeeded);
         }
     }
-    
+    // Create new ballons that don't touch the sand
     public void createNewballons(int num){
         for(int i=0; i<num; i++){
             Trophy trophy = new Trophy();
@@ -83,20 +71,23 @@ public class Level extends Screen{
             }  
         }
     }
-    
+    /**
+     * Static Section
+     */
+    // Update the level
     public static void updateLevel(){
         level++;
         Timer.getInstance().restartTimer();
     }
-    
+    // Get the level
     public static int getLevel(){
         return level;
     }
-    
+    // Restart the level
     public static void restartLevels(){
         level = 1;
     }
-    
+    // Get the needed ballons
     public static int getBallonsNeeded(){
         return ballonsNeeded;
     }

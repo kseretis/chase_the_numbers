@@ -2,6 +2,5 @@
 PROJECT TITLE: GetTheBallons
 PURPOSE OF PROJECT: Academic
 VERSION or DATE: v1 26/04/2022
-HOW TO START THIS PROJECT:
 AUTHORS: Seretis Kleanthis
-USER INSTRUCTIONS:
+USER INSTRUCTIONS: It's a serious game (under construction), developing with Greenfoot.

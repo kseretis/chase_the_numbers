@@ -7,14 +7,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 24/04/2022
  */
 public class Trophy extends SmoothMover{
+    private static final String SUFFIX = ".png";
     private int movingCounter = 0;
+    private int number;
+    private GreenfootImage image;
     // Act
     public void act(){
         if(Level.getLevel() == 2)
             randomMove();
     }
+    
+    public Trophy(int number){
+        this.number = number;
+        String test = number + SUFFIX;
+        image = new GreenfootImage(test);
+        setImage(image);
+    }
     // Random move
-    public void randomMove(){
+    private void randomMove(){
         if(movingCounter < 100)
             setLocation(getX() + 1, getY());
         else if(movingCounter < 200)

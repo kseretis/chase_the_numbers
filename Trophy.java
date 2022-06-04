@@ -27,4 +27,8 @@ public class Trophy extends SmoothMover{
     public boolean isTouchingSand(){
         return isTouching(Sand.class) ? true : false;
     }
+    
+    public void getNumbersIcon(){
+        
+    }
 }

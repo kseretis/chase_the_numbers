@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=MathProblem
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Math\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=MathProblem()
+comment3.params=
+comment3.target=MathProblem\ getInstance()
+comment4.params=
+comment4.target=java.lang.String\ getLevelMathProblem()
+comment5.params=
+comment5.target=void\ setMathProblemImg()
+comment6.params=
+comment6.target=void\ generateMathProblems()
+comment7.params=level
+comment7.target=MathModel\ generateMathProblem(int)
+numComments=8

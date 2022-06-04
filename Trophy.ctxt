@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=void\ randomMove()
 comment3.params=
 comment3.target=boolean\ isTouchingSand()
-numComments=4
+comment4.params=
+comment4.target=void\ getNumbersIcon()
+numComments=5

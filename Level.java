@@ -48,6 +48,11 @@ public class Level extends Screen{
         addObject(timer,70,34);
         //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
+        
+        //Set math problem
+        MathProblem mathProblem = MathProblem.getInstance();
+        mathProblem.setMathProblemImg();
+        addObject(mathProblem, 650, 34);
     }
     // Check the level and modifies the needed ballons
     public void checkLevel(){

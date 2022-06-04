@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=MathModel
+comment1.params=level
+comment1.target=MathModel(int)
+comment2.params=
+comment2.target=int\ getLevel()
+comment3.params=level
+comment3.target=void\ setLevel(int)
+comment4.params=
+comment4.target=java.lang.String\ getProblem()
+comment5.params=problem
+comment5.target=void\ setProblem(java.lang.String)
+comment6.params=
+comment6.target=int\ getSolution()
+comment7.params=solution
+comment7.target=void\ setSolution(int)
+comment8.params=
+comment8.target=int[]\ getAnswers()
+comment9.params=answers
+comment9.target=void\ setAnswers(int[])
+numComments=10

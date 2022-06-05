@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level extends Screen{
     private static int level = 1;
-    private static int ballonsNeeded = 5;
+    private static int numberOfTrophies = 6;
     // Constructor
     public Level(){    
         super(); 
@@ -37,8 +37,15 @@ public class Level extends Screen{
         addObject(sand9,625,198);
         Sand sand10 = new Sand();
         addObject(sand10,370,758);
-        //Spawn ballons
-        checkLevel();
+        
+        //Set math problem
+        MathProblem mathProblem = MathProblem.getInstance();
+        mathProblem.setMathProblemImg();
+        addObject(mathProblem, 650, 34);
+        //Spawn numbers
+        MathModel model = mathProblem.getLevelMathProblem();
+        spawnNewTrophies(model);
+
         //Create Hero, timer and counter instance
         Counter counter = new Counter();
         addObject(counter,69,66);
@@ -48,14 +55,10 @@ public class Level extends Screen{
         addObject(timer,70,34);
         //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
-        
-        //Set math problem
-        MathProblem mathProblem = MathProblem.getInstance();
-        mathProblem.setMathProblemImg();
-        addObject(mathProblem, 650, 34);
     }
+
     // Check the level and modifies the needed ballons
-    public void checkLevel(){
+    /*public void checkLevel(){
         if(level == 1){
             ballonsNeeded = 5;
             createNewballons(ballonsNeeded);
@@ -64,9 +67,9 @@ public class Level extends Screen{
             ballonsNeeded++;
             createNewballons(ballonsNeeded);
         }
-    }
+    }*/
     // Create new ballons that don't touch the sand
-    public void createNewballons(int num){
+    /*public void createNewballons(int num){
         for(int i=0; i<num; i++){
             Trophy trophy = new Trophy();
             addObject(trophy, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
@@ -75,7 +78,17 @@ public class Level extends Screen{
                 addObject(trophy, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
             }  
         }
-    }
+    } */
+    
+    public void spawnNewTrophies(MathModel model){
+        for(Trophy tr: model.getTrophyAnswers()){
+            addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
+            while(tr.isTouchingSand()){
+                removeObject(tr);
+                addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
+            } 
+        }
+    } 
     /**
      * Static Section
      */
@@ -94,6 +107,6 @@ public class Level extends Screen{
     }
     // Get the needed ballons
     public static int getBallonsNeeded(){
-        return ballonsNeeded;
+        return 2;//ballonsNeeded;
     }
 }

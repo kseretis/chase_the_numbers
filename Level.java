@@ -1,13 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class MyWorld here.
+ * Main level class. Is being recreated dynamically at the begging
+ * of each level
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis 
+ * @version 2
+ * @date 5/6/2022
  */
 public class Level extends Screen{
-    private static int level = 1;
+    public static final int INIT_LEVEL = 1;
+    public static final int MAXIMUM_LEVEL = 2;
+    private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 6;
     // Constructor
     public Level(){    
@@ -39,9 +43,7 @@ public class Level extends Screen{
         addObject(sand10,370,758);
         
         //Set math problem
-        MathProblem mathProblem = MathProblem.getInstance();
-        mathProblem.setMathProblemImg();
-        addObject(mathProblem, 650, 34);
+        addObject(MathProblem.getInstance(), 650, 34);
         //Spawn numbers
         MathModel model = MathProblem.getLevelMathProblem();
         spawnNewTrophies(model);
@@ -56,29 +58,6 @@ public class Level extends Screen{
         //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
     }
-
-    // Check the level and modifies the needed ballons
-    /*public void checkLevel(){
-        if(level == 1){
-            ballonsNeeded = 5;
-            createNewballons(ballonsNeeded);
-        }
-        else{
-            ballonsNeeded++;
-            createNewballons(ballonsNeeded);
-        }
-    }*/
-    // Create new ballons that don't touch the sand
-    /*public void createNewballons(int num){
-        for(int i=0; i<num; i++){
-            Trophy trophy = new Trophy();
-            addObject(trophy, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
-            while(trophy.isTouchingSand()){
-                removeObject(trophy);
-                addObject(trophy, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
-            }  
-        }
-    } */
     
     public void spawnNewTrophies(MathModel model){
         for(Trophy tr: model.getTrophyAnswers()){
@@ -104,9 +83,5 @@ public class Level extends Screen{
     // Restart the level
     public static void restartLevels(){
         level = 1;
-    }
-    // Get the needed ballons
-    public static int getBallonsNeeded(){
-        return 2;//ballonsNeeded;
     }
 }

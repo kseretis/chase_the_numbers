@@ -1,10 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.*;
+import java.util.*;
 /**
  * A class based on Singleton pattern, created for the main character of the game
  * 
  * @author Seretis Kleanthis 
- * @version 24/04/2022
+ * @version 2
+ * @date 24/4/2022
  */
 public class Hero extends SmoothMover{
     private static final int SPEED = 2;         //Normal speed
@@ -34,10 +35,10 @@ public class Hero extends SmoothMover{
         checkKeyPress();
         switchImages();
         lookForTrophy();
-        startNextLevel();
+        //startNextLevel();
     }
-    // Check which key is being pressed
-    public void checkKeyPress(){
+    // Checks which key is being pressed
+    private void checkKeyPress(){
         int dx = 0, dy = 0;
         
         if(Greenfoot.isKeyDown("left")){
@@ -57,12 +58,12 @@ public class Hero extends SmoothMover{
         moveCharacter(dx, dy);
     }
     // If a key is pressed the character moves
-    public void moveCharacter(int x, int y){
+    private void moveCharacter(int x, int y){
         if(x != 0 || y != 0)
             setLocation(getX()+x, getY()+y);
     }
     // Images switching
-    public void switchImages(){
+    private void switchImages(){
         if(goLeft)
             if(getImage() == image3)
                 setImage(image4);
@@ -75,36 +76,37 @@ public class Hero extends SmoothMover{
                 setImage(image1);
     }
     // Looking for ballons, if he finds one, he eat it
-    public void lookForTrophy(){
-        if(isTouching(Trophy.class)){
+    private void lookForTrophy(){
+        if(isTouching(Trophy.class)){  
+            Trophy trophy = (Trophy)getOneIntersectingObject(Trophy.class);
+            if(isLevelPassed(trophy))
+                startNextLevel();
             removeTouching(Trophy.class);
-            getWorld().getObjects(Counter.class).get(0).add(1);
             Greenfoot.playSound("mixkit-arrow-whoosh-1491.wav");
-            Timer.updateTime(3);
+            //Timer.updateTime(3);
         }
     }
     // Start the next level
-    public void startNextLevel(){
-        if(isLevelPassed()){
-            getWorld().getObjects(Counter.class).get(0).setValue(0);
-            Level.updateLevel();
-            if(Level.getLevel() > 2){
-                Greenfoot.playSound("win.wav");
-                Greenfoot.setWorld(new WinScreen());
-            }
-            else{
-                Greenfoot.playSound("level-passed.wav");
-                Greenfoot.setWorld(new PreLevelScreen());
-            }
-                            
+    private void startNextLevel(){
+        //getWorld().getObjects(Counter.class).get(0).setValue(0); //FIXME
+        Level.updateLevel();
+        if(Level.getLevel() > Level.MAXIMUM_LEVEL){
+            Greenfoot.playSound("win.wav");
+            MathProblem.getInstance().updateMathProblem();
+            Greenfoot.setWorld(new WinScreen());
         }
+        else{
+            Greenfoot.playSound("level-passed.wav");
+            MathProblem.getInstance().updateMathProblem();
+            Greenfoot.setWorld(new PreLevelScreen());
+        }            
     }
     // Touching sand    
     public boolean isTouchingSand(){
         return isTouching(Sand.class) ? true : false;
     }
     // Level passed, based on ballons needed per level
-    public boolean isLevelPassed(){
-        return getWorld().getObjects(Counter.class).get(0).getValue() >= Level.getBallonsNeeded() ? true : false; 
+    private boolean isLevelPassed(Trophy trophy){ 
+        return trophy.isTheCorrectAnswer(trophy.getNumber());
     }
 }

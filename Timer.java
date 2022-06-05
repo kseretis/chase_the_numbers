@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 24/04/2022
  */
 public class Timer extends Actor{
-    private static final int TIME = 6;
+    private static final int TIME = 15;
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
     private static int timer;

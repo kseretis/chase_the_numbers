@@ -54,8 +54,7 @@ public class MathModel {
     
     public void setTrophyAnswers(){
         for(int num: answers){
-            //Trophy trophy = new Trophy();
-            trophyAnswers.add(new Trophy(num));
+            trophyAnswers.add(new Trophy(this, num));
         }
     }
     

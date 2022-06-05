@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * A class based on Singleton pattern, created for the main character of the game
  * 
@@ -34,7 +34,7 @@ public class Hero extends SmoothMover{
         checkKeyPress();
         switchImages();
         lookForTrophy();
-        startNextLevel();
+        //startNextLevel();
     }
     // Check which key is being pressed
     public void checkKeyPress(){
@@ -76,35 +76,34 @@ public class Hero extends SmoothMover{
     }
     // Looking for ballons, if he finds one, he eat it
     public void lookForTrophy(){
-        if(isTouching(Trophy.class)){
+        if(isTouching(Trophy.class)){  
+            Trophy trophy = (Trophy)getOneIntersectingObject(Trophy.class);
+            if(isLevelPassed(trophy))
+                startNextLevel();
             removeTouching(Trophy.class);
-            getWorld().getObjects(Counter.class).get(0).add(1);
             Greenfoot.playSound("mixkit-arrow-whoosh-1491.wav");
-            Timer.updateTime(3);
+            //Timer.updateTime(3);
         }
     }
     // Start the next level
     public void startNextLevel(){
-        if(isLevelPassed()){
-            getWorld().getObjects(Counter.class).get(0).setValue(0);
-            Level.updateLevel();
-            if(Level.getLevel() > 2){
-                Greenfoot.playSound("win.wav");
-                Greenfoot.setWorld(new WinScreen());
-            }
-            else{
-                Greenfoot.playSound("level-passed.wav");
-                Greenfoot.setWorld(new PreLevelScreen());
-            }
-                            
+        //getWorld().getObjects(Counter.class).get(0).setValue(0);
+        Level.updateLevel();
+        if(Level.getLevel() > 2){
+            Greenfoot.playSound("win.wav");
+            Greenfoot.setWorld(new WinScreen());
         }
+        else{
+            Greenfoot.playSound("level-passed.wav");
+            Greenfoot.setWorld(new PreLevelScreen());
+        }            
     }
     // Touching sand    
     public boolean isTouchingSand(){
         return isTouching(Sand.class) ? true : false;
     }
     // Level passed, based on ballons needed per level
-    public boolean isLevelPassed(){
-        return getWorld().getObjects(Counter.class).get(0).getValue() >= Level.getBallonsNeeded() ? true : false; 
+    public boolean isLevelPassed(Trophy trophy){ 
+        return trophy.isTheCorrectAnswer(trophy.getNumber());
     }
 }

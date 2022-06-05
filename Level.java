@@ -43,12 +43,12 @@ public class Level extends Screen{
         mathProblem.setMathProblemImg();
         addObject(mathProblem, 650, 34);
         //Spawn numbers
-        MathModel model = mathProblem.getLevelMathProblem();
+        MathModel model = MathProblem.getLevelMathProblem();
         spawnNewTrophies(model);
 
         //Create Hero, timer and counter instance
-        Counter counter = new Counter();
-        addObject(counter,69,66);
+        //Counter counter = new Counter();
+        //addObject(counter,69,66);
         Hero hero = Hero.getInstance();
         addObject(hero,750,753);
         Timer timer = Timer.getInstance();

@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Trophy extends SmoothMover{
     private static final String SUFFIX = ".png";
     private int movingCounter = 0;
+    private MathModel problem;
     private int number;
     private GreenfootImage image;
     // Act
@@ -17,9 +18,10 @@ public class Trophy extends SmoothMover{
             randomMove();
     }
     
-    public Trophy(int number){
+    public Trophy(MathModel problem, int number){
+        this.problem = problem;
         this.number = number;
-        image = new GreenfootImage(number + SUFFIX);
+        image = new GreenfootImage(this.number + SUFFIX);
         setImage(image);
         getImage().scale(60, 60);
     }
@@ -38,7 +40,11 @@ public class Trophy extends SmoothMover{
         return isTouching(Sand.class) ? true : false;
     }
     
-    public void getNumbersIcon(){
-        
+    public int getNumber(){
+        return number;
+    }
+    
+    public boolean isTheCorrectAnswer(int answer){
+        return this.problem.getSolution() == answer ? true : false;
     }
 }

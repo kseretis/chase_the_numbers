@@ -5,6 +5,8 @@ import greenfoot.*;
 public class MathProblem extends Actor{
     private static MathProblem instance = null;
     private static List<MathModel> problems = new ArrayList<>();
+    private static MathModel currentMathProblem;
+    private static int mathProblemCounter;
 
     /**
      * Act - do whatever the Math wants to do. This method is called whenever
@@ -17,6 +19,8 @@ public class MathProblem extends Actor{
 
     private MathProblem(){
         generateMathProblems();
+        mathProblemCounter = 0;
+        currentMathProblem = problems.get(mathProblemCounter);
     }
 
     public static MathProblem getInstance(){
@@ -24,13 +28,9 @@ public class MathProblem extends Actor{
             instance = new MathProblem();
         return instance;
     }
-
-    //public String getLevelMathProblemString(){
-    //    return problems.get(Level.getLevel()).getProblem();
-    //}
     
-    public MathModel getLevelMathProblem(){
-        return problems.get(Level.getLevel());
+    public static MathModel getLevelMathProblem(){
+        return problems.get(mathProblemCounter);
     }
     
     public void setMathProblemImg(){
@@ -51,22 +51,37 @@ public class MathProblem extends Actor{
                 model.setSolution(7);
                 answers = new int[]{2, 3, 4, 5, 7};
                 addAnswers(answers, model);
+                break;
             case 2:
                 model.setProblem("19 - 11");
                 model.setSolution(8);
                 answers = new int[]{5, 11, 8, 4, 13};
                 addAnswers(answers, model);
+                break;
             case 3:
             case 4:
             case 5:
         }
-        
         return model;
+    }
+    
+    private static void castModel(MathModel model){
+        /*model.setProblem("4 + 3");
+        model.setSolution(7);
+        int[] answers = {2, 3, 4, 5, 7};
+        for(int answer: answers)
+            model.addAnswer(answer);
+        model.setTrophyAnswers();*/
     }
     
     private static void addAnswers(int[] answers, MathModel model){
         for(int answer: answers)
             model.addAnswer(answer);
         model.setTrophyAnswers();
+    }
+    
+    public static void updateMathProblem(){
+        mathProblemCounter++;
+        currentMathProblem = problems.get(mathProblemCounter);
     }
 }

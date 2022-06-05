@@ -42,15 +42,10 @@ public class Level extends Screen{
         MathProblem mathProblem = MathProblem.getInstance();
         mathProblem.setMathProblemImg();
         addObject(mathProblem, 650, 34);
-        
+        //Spawn numbers
         MathModel model = mathProblem.getLevelMathProblem();
         spawnNewTrophies(model);
-        
- 
-        
-        //Spawn ballons
-        
-        //checkLevel();
+
         //Create Hero, timer and counter instance
         Counter counter = new Counter();
         addObject(counter,69,66);
@@ -60,14 +55,8 @@ public class Level extends Screen{
         addObject(timer,70,34);
         //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
-        
-        
     }
-    
-    public void spawnTrophies(){
-        
-        
-    }
+
     // Check the level and modifies the needed ballons
     /*public void checkLevel(){
         if(level == 1){
@@ -100,13 +89,6 @@ public class Level extends Screen{
             } 
         }
     } 
-    
-    
-    public void createNewTrophies(){
-        for(int i=0; i<numberOfTrophies; i++){
-        
-        }
-    }
     /**
      * Static Section
      */

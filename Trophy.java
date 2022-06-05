@@ -19,9 +19,9 @@ public class Trophy extends SmoothMover{
     
     public Trophy(int number){
         this.number = number;
-        String test = number + SUFFIX;
-        image = new GreenfootImage(test);
+        image = new GreenfootImage(number + SUFFIX);
         setImage(image);
+        getImage().scale(60, 60);
     }
     // Random move
     private void randomMove(){

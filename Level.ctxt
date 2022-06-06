@@ -1,13 +1,12 @@
 #BlueJ class context
 comment0.target=Level
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Main\ level\ class.\ Is\ being\ recreated\ dynamically\ at\ the\ begging\r\n\ of\ each\ level\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 2\r\n\ @date\ 5/6/2022\r\n
 comment1.params=
 comment1.target=Level()
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=model
 comment3.target=void\ spawnNewTrophies(MathModel)
-comment3.text=public\ void\ createNewballons(int\ num){\r\n\ \ \ \ \ \ \ \ for(int\ i\=0;\ i<num;\ i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ Trophy\ trophy\ \=\ new\ Trophy();\r\n\ \ \ \ \ \ \ \ \ \ \ \ addObject(trophy,\ Greenfoot.getRandomNumber(WIDTH),\ Greenfoot.getRandomNumber(HEIGHT));\r\n\ \ \ \ \ \ \ \ \ \ \ \ while(trophy.isTouchingSand()){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ removeObject(trophy);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ addObject(trophy,\ Greenfoot.getRandomNumber(WIDTH),\ Greenfoot.getRandomNumber(HEIGHT));\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\ \ \r\n\ \ \ \ \ \ \ \ }\r\n}
 comment4.params=
 comment4.target=void\ updateLevel()
 comment4.text=\r\n\ Static\ Section\r\n
@@ -15,6 +14,4 @@ comment5.params=
 comment5.target=int\ getLevel()
 comment6.params=
 comment6.target=void\ restartLevels()
-comment7.params=
-comment7.target=int\ getBallonsNeeded()
-numComments=8
+numComments=7

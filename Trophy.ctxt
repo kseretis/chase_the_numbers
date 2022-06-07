@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=Trophy
-comment0.text=\r\n\ A\ class\ created\ for\ the\ trophies\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 24/04/2022\r\n
+comment0.text=\r\n\ A\ class\ created\ for\ the\ trophies\ with\ numbers\ as\ images\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 2\r\n\ @date\ 24/04/2022\r\n
 comment1.params=
 comment1.target=void\ act()
-comment2.params=number
-comment2.target=Trophy(int)
+comment2.params=problem\ number
+comment2.target=Trophy(MathModel,\ int)
 comment3.params=
 comment3.target=void\ randomMove()
 comment4.params=
 comment4.target=boolean\ isTouchingSand()
 comment5.params=
-comment5.target=void\ getNumbersIcon()
-numComments=6
+comment5.target=int\ getNumber()
+comment6.params=answer
+comment6.target=boolean\ isTheCorrectAnswer(int)
+numComments=7

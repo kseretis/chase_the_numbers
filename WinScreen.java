@@ -17,5 +17,6 @@ public class WinScreen extends Screen{
     public void act(){
         if(Greenfoot.isKeyDown("space"))
             Greenfoot.setWorld(new Level());
+        //TODO restart conmponets
     }
 }

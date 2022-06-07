@@ -73,6 +73,10 @@ public class MathProblem extends Actor{
     // Updates the current math problem and also the counter 
     public static void updateMathProblem(){
         mathProblemCounter++;
-        currentMathProblem = problems.get(mathProblemCounter);
+        try {
+            currentMathProblem = problems.get(mathProblemCounter);
+        }catch(Exception e){
+            currentMathProblem = null;
+        }
     }
 }

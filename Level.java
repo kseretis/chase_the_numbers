@@ -21,7 +21,7 @@ public class Level extends Screen{
     // Prepare the level
     private void prepare(){
         //Spawn sands
-        Sand sand = new Sand();
+        /*Sand sand = new Sand();
         addObject(sand,627,656);
         Sand sand2 = new Sand();
         addObject(sand2,450,556);
@@ -40,7 +40,7 @@ public class Level extends Screen{
         Sand sand9 = new Sand();
         addObject(sand9,625,198);
         Sand sand10 = new Sand();
-        addObject(sand10,370,758);
+        addObject(sand10,370,758);*/
         
         //Set math problem
         addObject(MathProblem.getInstance(), 650, 34);

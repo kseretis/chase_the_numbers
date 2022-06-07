@@ -8,9 +8,22 @@ import java.util.*;
  * @date 24/4/2022
  */
 public class Hero extends SmoothMover{
-    private static final int SPEED = 2;         //Normal speed
+    private static final int SPEED = 3;         //Normal speed
     private static final int SLOW_SPEED = 1;    //Sand speed
+    private static final int MAXIMUM_IMAGE_NUMBER = 30;
+    private static final String IMAGE_PREFIX = "Citizen_";
+    private static final String IMAGE_FRONT = "front_";
+    private static final String IMAGE_BACK = "back_";
+    private static final String IMAGE_LEFT = "left_";
+    private static final String IMAGE_RIGHT = "right_";
+    private static final String IMAGE_SUFFIX = ".png";
+    //private static final String IMAGE_NAME = "Citizen_Walk_000";
+    
     private static Hero singleInstance = null;  //Hero instance
+    private GreenfootImage heroImage;
+    private int frontImgCounter = 0;
+    
+    
     private GreenfootImage image1;              //Images
     private GreenfootImage image2;              //Images
     private GreenfootImage image3;              //Images
@@ -18,11 +31,11 @@ public class Hero extends SmoothMover{
     private boolean goLeft;                     //Moving left(true). moving right(false)
     // Constructor
     private Hero(){
-        image1 = new GreenfootImage("Hero0.png");
-        image2 = new GreenfootImage("Hero1.png");
-        image3 = new GreenfootImage("Hero3.png");
-        image4 = new GreenfootImage("Hero4.png");
-        setImage(image1);
+        //image1 = new GreenfootImage("Hero0.png"); //TODELETE
+        //image2 = new GreenfootImage("Hero1.png"); //TODELETE
+        //image3 = new GreenfootImage("Hero3.png"); //TODELETE
+        //image4 = new GreenfootImage("Hero4.png"); //TODELETE
+        setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
     }
     // Get instance of the hero
     public static Hero getInstance(){
@@ -33,7 +46,7 @@ public class Hero extends SmoothMover{
     // act
     public void act(){
         checkKeyPress();
-        switchImages();
+        //switchImages();
         lookForTrophy();
         //startNextLevel();
     }
@@ -42,8 +55,17 @@ public class Hero extends SmoothMover{
         int dx = 0, dy = 0;
         
         if(Greenfoot.isKeyDown("left")){
+             dx = !isTouchingSand() ? dx-SPEED : dx-SLOW_SPEED;
+            goLeft = true;
+            setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
+            frontImgCounter = frontImgCounter < MAXIMUM_IMAGE_NUMBER ? frontImgCounter++ : 0 ;
+            //moveCharacter(dx, dy);
+        }
+        if(Greenfoot.isKeyDown("left")){
             dx = !isTouchingSand() ? dx-SPEED : dx-SLOW_SPEED;
             goLeft = true;
+            setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
+            frontImgCounter = frontImgCounter < MAXIMUM_IMAGE_NUMBER ? frontImgCounter++ : 0 ;
         }
         if(Greenfoot.isKeyDown("right")){
             dx = !isTouchingSand() ? dx+SPEED : dx+SLOW_SPEED;
@@ -56,6 +78,7 @@ public class Hero extends SmoothMover{
             dy = !isTouchingSand() ? dy+SPEED : dy+SLOW_SPEED;
         }
         moveCharacter(dx, dy);
+        moveCharacter(dx, dy);
     }
     // If a key is pressed the character moves
     private void moveCharacter(int x, int y){
@@ -64,7 +87,7 @@ public class Hero extends SmoothMover{
     }
     // Images switching
     private void switchImages(){
-        if(goLeft)
+        /*if(goLeft)
             if(getImage() == image3)
                 setImage(image4);
             else
@@ -73,7 +96,16 @@ public class Hero extends SmoothMover{
             if(getImage() == image1)
                 setImage(image2);
             else
-                setImage(image1);
+                setImage(image1);*/
+        while(Greenfoot.isKeyDown("left")){
+            setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
+            frontImgCounter = frontImgCounter < MAXIMUM_IMAGE_NUMBER ? frontImgCounter++ : 0 ;
+        }
+    }
+    private void switchImages2(){
+ 
+        
+        
     }
     // Looking for ballons, if he finds one, he eat it
     private void lookForTrophy(){

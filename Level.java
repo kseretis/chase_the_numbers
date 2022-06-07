@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.util.*;
 
 /**
  * Main level class. Is being recreated dynamically at the begging
@@ -6,16 +7,19 @@ import greenfoot.*;
  * 
  * @author Seretis Kleanthis 
  * @version 2
- * @date 5/6/2022
+ * @date 7/6/2022
  */
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
     public static final int MAXIMUM_LEVEL = 2;
     private static int level = INIT_LEVEL;
-    private static int numberOfTrophies = 6;
+    private static int numberOfTrophies = 5;
+    private List<GreenfootImage> backgrounds = new ArrayList<>();
     // Constructor
     public Level(){    
         super(); 
+        readBackgroundImgs();
+        setRandombackground();
         prepare();
     }
     // Prepare the level
@@ -58,8 +62,22 @@ public class Level extends Screen{
         //Hero over sand
         setPaintOrder(Hero.class, Sand.class);
     }
-    
-    public void spawnNewTrophies(MathModel model){
+    // Reads backgrounds
+    private void readBackgroundImgs(){
+        backgrounds.add(new GreenfootImage("grass.png"));
+        backgrounds.add(new GreenfootImage("sand.png"));
+        backgrounds.add(new GreenfootImage("rock.png"));
+    }
+    // Sets random background
+    private void setRandombackground(){
+        setBackground(backgrounds.get(getRandomNumber(0, 2)));
+    }
+    // Gets rancom number in range
+    private int getRandomNumber(int min, int max){
+        return Greenfoot.getRandomNumber(max - min + 1) + min;
+    }
+    // Spawns new numbers
+    private void spawnNewTrophies(MathModel model){
         for(Trophy tr: model.getTrophyAnswers()){
             addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
             while(tr.isTouchingSand()){

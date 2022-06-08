@@ -1,5 +1,6 @@
 import java.util.*;
 import greenfoot.*;
+import java.lang.*;
 
 /**
  * A class based on Singleton pattern, created for math problem that is appearing
@@ -14,17 +15,17 @@ public class MathProblem extends Actor{
     private static List<MathModel> problems = new ArrayList<>();
     private static MathModel currentMathProblem;
     private static int mathProblemCounter;
+    private static final Color lettersColor = new Color(0, 90, 43);
     /**
      * Constructor for objects of class MathProblem
      */
     private MathProblem(){
         generateMathProblems();
-        mathProblemCounter = 0;
-        currentMathProblem = problems.get(mathProblemCounter);
+        restartMathProblem();
     }
     // act
     public void act(){
-        setImage(new GreenfootImage(getLevelMathProblem().getProblem() + " = ?", 50, Color.BLACK, Color.WHITE));
+        setImage(new GreenfootImage(getLevelMathProblem().getProblem() + " = ?", 32, Color.WHITE, lettersColor));
     }
     /**********************************************
      * Static Section
@@ -85,6 +86,6 @@ public class MathProblem extends Actor{
     // Restart math problem
     public static void restartMathProblem(){
         mathProblemCounter = 0;
-        currentMathProblem = problems.get(0);
+        currentMathProblem = problems.get(mathProblemCounter);
     }
 }

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.*;
 
 /**
  * A class based on Singleton pattern for the timer
@@ -13,6 +14,7 @@ public class Timer extends Actor{
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
     private static int timer;
+    private Color backgroundColor = new Color(236, 239, 241);
     /**
      * Constructor for objects of class Timer
      */
@@ -44,7 +46,8 @@ public class Timer extends Actor{
     }
     // Update Image
     private void updateImage(){
-        setImage(new GreenfootImage("Time: "+ timer/COUNTER, 20, Color.BLACK, Color.YELLOW));
+        String scoreBoardText = "Time: "+ timer/COUNTER + "\nLevel: " + Level.getLevel();
+        setImage(new GreenfootImage(scoreBoardText, 20, Color.BLACK, backgroundColor));
     }
     // Game over
     private void gameOver(){

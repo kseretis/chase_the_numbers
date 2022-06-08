@@ -28,23 +28,24 @@ public class Level extends Screen{
     }
     // Prepare the level
     private void prepare(){
-        // Spawn Robots and Zombies
-        //addObject(new Robot(getRandomNumber(0, 1)), 450, 556);
-        //addObject(new Zombie(getRandomNumber(0, 1)), 230, 320);
-        spawnEnemies();
-        //Set math problem
-        addObject(MathProblem.getInstance(), 650, 34);
-        //Spawn numbers
+        // Setup board
+        addObject(new Board(), 90, 70);
+        addObject(Timer.getInstance(), 65, 65);
+        
+        // Setup blackboard
+        addObject(new Blackboard(), 690, 70);
+        addObject(MathProblem.getInstance(), 690, 65);
+        
+        // Generate math problem
         MathModel model = MathProblem.getLevelMathProblem();
         spawnNumbers(model);
-
-        //Create Hero, timer and counter instance
-        //Counter counter = new Counter();
-        //addObject(counter,69,66);
+        
+        // Instantiate Hero
         Hero hero = Hero.getInstance();
         addObject(hero,750,753);
-        Timer timer = Timer.getInstance();
-        addObject(timer,70,34);
+        
+        // Spawn enemies
+        spawnEnemies();
         setPaintOrder(Enemy.class, Number.class);
     }
     // Reads backgrounds

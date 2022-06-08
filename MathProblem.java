@@ -15,14 +15,13 @@ public class MathProblem extends Actor{
     private static List<MathModel> problems = new ArrayList<>();
     private static MathModel currentMathProblem;
     private static int mathProblemCounter;
-    private Color lettersColor = new Color(0, 90, 43);
+    private static final Color lettersColor = new Color(0, 90, 43);
     /**
      * Constructor for objects of class MathProblem
      */
     private MathProblem(){
         generateMathProblems();
-        mathProblemCounter = 0;
-        currentMathProblem = problems.get(mathProblemCounter);
+        restartMathProblem();
     }
     // act
     public void act(){
@@ -87,6 +86,6 @@ public class MathProblem extends Actor{
     // Restart math problem
     public static void restartMathProblem(){
         mathProblemCounter = 0;
-        currentMathProblem = problems.get(0);
+        currentMathProblem = problems.get(mathProblemCounter);
     }
 }

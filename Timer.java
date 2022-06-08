@@ -14,7 +14,7 @@ public class Timer extends Actor{
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
     private static int timer;
-    private Color backgroundColor = new Color(236, 239, 241);
+    private static final Color backgroundColor = new Color(236, 239, 241);
     /**
      * Constructor for objects of class Timer
      */

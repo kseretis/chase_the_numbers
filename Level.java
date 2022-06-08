@@ -12,9 +12,11 @@ import java.util.*;
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
     public static final int MAXIMUM_LEVEL = 2;
+    private static final int MINIMUM_X_SPAWING_POSITION = 50;
+    private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
+    private static final int MINIMUM_Y_SPAWING_POSITION = 50;
+    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 100;
     private static int level = INIT_LEVEL;
-    private static final int MINIMUM_SPAWING_POSITION = 50;
-    private static final int MAXIMUM_SPAWING_POSITION = WIDTH - 50;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
     /**
@@ -29,7 +31,7 @@ public class Level extends Screen{
     // Prepare the level
     private void prepare(){
         // Setup board
-        addObject(new Board(), 90, 70);
+        addObject(new ScoreBoard(), 90, 70);
         addObject(Timer.getInstance(), 65, 65);
         
         // Setup blackboard
@@ -66,12 +68,12 @@ public class Level extends Screen{
     private void spawnNumbers(MathModel model){
         for(Number number: model.getNumbers()){
             getRandomNumber(50, WIDTH);
-            addObject(number, getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION));
-            while(number.isTouchingSameObject()){
+            addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
+                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
+            while(number.isTouchingNumber() || number.isTouchingBoard()){
                 removeObject(number);
-                addObject(number, getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION), 
-                                    getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION));
+                addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
+                                    getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
             }
         }
     }
@@ -89,12 +91,14 @@ public class Level extends Screen{
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
-        addObject(enemy, getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION), 
-                            getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION));
-        while(enemy.isTouchingSameObject()){
+        addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
+                            getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
+        while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
             removeObject(enemy);
-            addObject(enemy, getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_SPAWING_POSITION, MAXIMUM_SPAWING_POSITION));
+            int x = getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION);
+            int y = getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION);
+            addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
+                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
         }
     }
     /**********************************************
@@ -112,6 +116,5 @@ public class Level extends Screen{
     // Restart the level
     public static void restartLevels(){
         level = 1;
-        Timer.getInstance().restartTimer();
     }
 }

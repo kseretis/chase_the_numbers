@@ -94,11 +94,12 @@ public class Hero extends SmoothMover{
     // Start the next level
     private void startNextLevel(){
         Level.updateLevel();
+        MathProblem.getInstance().updateMathProblem();
+        
         String sound = Level.getLevel() > Level.MAXIMUM_LEVEL ? WIN_SOUND : LEVEL_PASSED_SOUND;
         Screen newScreen = Level.getLevel() > Level.MAXIMUM_LEVEL ? new WinScreen() : new PreLevelScreen();
         
         Greenfoot.playSound(sound);
-        MathProblem.getInstance().updateMathProblem();
         Greenfoot.setWorld(newScreen);
     }
     // Level passed, based on ballons needed per level

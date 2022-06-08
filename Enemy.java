@@ -21,7 +21,6 @@ public class Enemy extends SmoothMover implements MovingObject{
      */
     public Enemy(int randomNumber){
         this.movingCounter = getRandomDirection(randomNumber);
-        //TODO random movement right or left
     }
     // Returns 0 or 100 for random number received. So, left or right
     public int getRandomDirection(int direction){
@@ -64,6 +63,14 @@ public class Enemy extends SmoothMover implements MovingObject{
     }
     // Touching same object getter
     public boolean isTouchingSameObject(){
-        return isTouching(Enemy.class) ? true : false;
+        return isTouching(Enemy.class);
+    }
+    // Touching board getter
+    public boolean isTouchingBoard(){
+        return isTouching(Board.class);
+    }
+    // Touching hero getter
+    public boolean isTouchingHero(){
+        return isTouching(Hero.class);
     }
 }

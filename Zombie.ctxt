@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Zombie
+comment0.text=\r\n\ It's\ an\ Enemy\ based\ instance\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \ \r\n\ @version\ 2\r\n\ @date\ 8/6/2022\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=random
+comment2.target=Zombie(int)
+numComments=3

@@ -9,7 +9,6 @@ import java.util.*;
  */
 public class Hero extends SmoothMover{
     private static final int SPEED = 3;         //Normal speed
-    private static final int SLOW_SPEED = 1;    //Sand speed
     private static final int MAXIMUM_IMAGE_NUMBER = 29;
     private static final String IMAGE_PREFIX = "Hero\\Citizen_";
     private static final String IMAGE_FRONT = "front_";
@@ -43,23 +42,23 @@ public class Hero extends SmoothMover{
     // Checks which key is being pressed
     private void checkKeyPress(){
         int dx = 0, dy = 0;
-        if(Greenfoot.isKeyDown("left")){
-            dx = !isTouchingSand() ? dx-SPEED : dx-SLOW_SPEED;
+        if(Greenfoot.isKeyDown("left")){ //FIXME
+            dx = dx-SPEED;
             switchImage(IMAGE_LEFT, leftImgCounter);
             leftImgCounter = updateImgCounter(leftImgCounter);
         }
         if(Greenfoot.isKeyDown("right")){
-            dx = !isTouchingSand() ? dx+SPEED : dx+SLOW_SPEED;
+            dx = dx+SPEED;
             switchImage(IMAGE_RIGHT, rightImgCounter);
             rightImgCounter = updateImgCounter(rightImgCounter);
         }
         if(Greenfoot.isKeyDown("up")){
-            dy = !isTouchingSand() ? dy-SPEED : dy-SLOW_SPEED;
+            dy = dy-SPEED;
             switchImage(IMAGE_BACK, backImgCounter);
             backImgCounter = updateImgCounter(backImgCounter);
         }
         if(Greenfoot.isKeyDown("down")){
-            dy = !isTouchingSand() ? dy+SPEED : dy+SLOW_SPEED;
+            dy = dy+SPEED;
             switchImage(IMAGE_FRONT, frontImgCounter);
             frontImgCounter = updateImgCounter(frontImgCounter);
         }
@@ -97,10 +96,6 @@ public class Hero extends SmoothMover{
         Greenfoot.playSound(sound);
         MathProblem.getInstance().updateMathProblem();
         Greenfoot.setWorld(newScreen);
-    }
-    // Touching sand    
-    public boolean isTouchingSand(){
-        return isTouching(Sand.class) ? true : false;
     }
     // Level passed, based on ballons needed per level
     private boolean isLevelPassed(Trophy trophy){ 

@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 24/04/2022
  */
 public class Timer extends Actor{
+    private static final String GAME_OVER_SOUND = "buzzer-gameover.wav";
     private static final int TIME = 30;
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
@@ -44,10 +45,7 @@ public class Timer extends Actor{
     }
     // Game over
     private void gameOver(){
-        getWorld().removeObjects(getWorld().getObjects(Sand.class));
-        getWorld().removeObjects(getWorld().getObjects(Trophy.class));
-        getWorld().removeObjects(getWorld().getObjects(Hero.class));
-        Greenfoot.playSound("buzzer-gameover.wav");
+        Greenfoot.playSound(GAME_OVER_SOUND);
         Greenfoot.setWorld(new GameOverScreen());
     }
 }

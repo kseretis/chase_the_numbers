@@ -1,7 +1,22 @@
 #BlueJ class context
 comment0.target=Enemy
-comment0.text=\r\n\ This\ model\ has\ created\ to\ represent\ the\ instance\ of\ every\ single\ Enemy\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=Enemy()
+comment0.text=\r\n\ This\ model\ has\ created\ to\ represent\ the\ instance\ of\ every\ single\ Enemy\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \ \r\n\ @version\ 2\r\n\ @date\ 8/6/2022\r\n
+comment1.params=randomNumber
+comment1.target=Enemy(int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Enemy\r\n
-numComments=2
+comment2.params=direction
+comment2.target=int\ getRandomDirection(int)
+comment3.params=
+comment3.target=boolean\ isMovingRight()
+comment4.params=imagePrefix
+comment4.target=java.lang.String\ buildStringPath(java.lang.String)
+comment5.params=
+comment5.target=void\ updateSwitchingImgCounter()
+comment6.params=speed
+comment6.target=void\ randomMove(int)
+comment6.text=\r\n\ Implementing\ abstract\ methods\ from\ MovingObject\ interface\r\n
+comment7.params=imagePrefix
+comment7.target=void\ switchImage(java.lang.String)
+comment8.params=
+comment8.target=boolean\ isTouchingSameObject()
+numComments=9

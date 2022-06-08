@@ -16,9 +16,13 @@ public class Enemy extends SmoothMover implements MovingObject{
     /**
      * Constructor for objects of class Enemy
      */
-    public Enemy(){
-        this.movingCounter = 0;
+    public Enemy(int movingCounter){
+        this.movingCounter = getRandomDirection(movingCounter);
         //TODO random movement right or left
+    }
+    
+    public int getRandomDirection(int direction){
+        return direction == 0 ? 0 : 100;
     }
 
     public boolean isMovingRight(){
@@ -36,13 +40,13 @@ public class Enemy extends SmoothMover implements MovingObject{
     
     public void switchImage(){}
     
-    public void randomMove(){ //FIXME
+    public void randomMove(int speed){ //FIXME
         if(movingCounter < 100){
-            setLocation(getX() + 1, getY());
+            setLocation(getX() + speed, getY());
             movingRight = true;
         }
         else if(movingCounter < 200){
-            setLocation(getX() - 1, getY());
+            setLocation(getX() - speed, getY());
             movingRight = false;
         }
         else

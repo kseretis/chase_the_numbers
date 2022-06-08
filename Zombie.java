@@ -14,18 +14,17 @@ public class Zombie extends Enemy{
         randomMove();
     }
 
-    public Zombie(){
-        super();
+    public Zombie(int random){
+        super(random);
     }
 
     @Override
-    public void switchImage() {
+    public void switchImage(){
         setImage(new GreenfootImage(buildStringPath(IMAGE_PREFIX)));
         updateSwitchingImgCounter();
     }
 
-    @Override
-    public void randomMove() {
-        super.randomMove();
+    public void randomMove(){
+        super.randomMove(SPEED);
     }
 }

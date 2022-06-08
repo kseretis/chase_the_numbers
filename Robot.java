@@ -7,25 +7,24 @@ import greenfoot.*;
  */
 public class Robot extends Enemy{
     private static final String IMAGE_PREFIX = "Robot\\Robot_";
-    private static final int SPEED = 2;
+    private static final int SPEED = 3;
 
     public void act(){
         switchImage();
         randomMove();
     }
 
-    public Robot(){
-        super();
+    public Robot(int random){
+        super(random);
     }
 
     @Override
-    public void switchImage() {
+    public void switchImage(){
         setImage(new GreenfootImage(buildStringPath(IMAGE_PREFIX)));
         updateSwitchingImgCounter();
     }
-
-    @Override
-    public void randomMove() {
-        super.randomMove();
+    
+    public void randomMove(){
+        super.randomMove(SPEED);
     }
 }

@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Trophy extends SmoothMover implements MovingObject{
     private static final String SUFFIX = ".png";
+    private static final int SPEED = 1;
     private int movingCounter = 0;
     private MathModel problem;
     private int number;
@@ -16,7 +17,7 @@ public class Trophy extends SmoothMover implements MovingObject{
     // Act
     public void act(){
         if(Level.getLevel() > Level.HEIGHT)
-            randomMove();
+            randomMove(SPEED);
     }
     // Constructor
     public Trophy(MathModel problem, int number){
@@ -27,16 +28,16 @@ public class Trophy extends SmoothMover implements MovingObject{
         getImage().scale(60, 60);
     }
     // Random move
-    public void randomMove(){
+    public void randomMove(int speed){
         if(movingCounter < 100)
-            setLocation(getX() + 1, getY());
+            setLocation(getX() + speed, getY());
         else if(movingCounter < 200)
-            setLocation(getX() - 1, getY());
+            setLocation(getX() - speed, getY());
         else
             movingCounter = 0;
         movingCounter++;
     }
-    // Touching a sand object
+    
     public boolean isTouchingSand(){
         return isTouching(Sand.class) ? true : false;
     }

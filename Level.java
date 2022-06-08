@@ -46,8 +46,8 @@ public class Level extends Screen{
         Sand sand10 = new Sand();
         addObject(sand10,370,758);*/
         // Spawn Robots
-        addObject(new Robot(), 450, 556);
-        addObject(new Zombie(), 230, 320);
+        addObject(new Robot(getRandomNumber(0, 1)), 450, 556);
+        addObject(new Zombie(getRandomNumber(0, 1)), 230, 320);
         
         //Set math problem
         addObject(MathProblem.getInstance(), 650, 34);

@@ -5,6 +5,6 @@
  * @version (a version number or a date)
  */
 public interface MovingObject  {
-    public abstract void randomMove();
+    public abstract void randomMove(int speed);
     public abstract void switchImage();
 }

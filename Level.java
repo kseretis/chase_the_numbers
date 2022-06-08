@@ -24,27 +24,6 @@ public class Level extends Screen{
     }
     // Prepare the level
     private void prepare(){
-        //Spawn sands
-        /*Sand sand = new Sand();
-        addObject(sand,627,656);
-        Sand sand2 = new Sand();
-        addObject(sand2,450,556);
-        Sand sand3 = new Sand();
-        addObject(sand3,648,421);
-        Sand sand4 = new Sand();
-        addObject(sand4,407,306);
-        Sand sand5 = new Sand();
-        addObject(sand5,241,448);
-        Sand sand6 = new Sand();
-        addObject(sand6,105,726);
-        Sand sand7 = new Sand();
-        addObject(sand7,84,284);
-        Sand sand8 = new Sand();
-        addObject(sand8,286,98);
-        Sand sand9 = new Sand();
-        addObject(sand9,625,198);
-        Sand sand10 = new Sand();
-        addObject(sand10,370,758);*/
         // Spawn Robots
         addObject(new Robot(getRandomNumber(0, 1)), 450, 556);
         addObject(new Zombie(getRandomNumber(0, 1)), 230, 320);
@@ -62,8 +41,6 @@ public class Level extends Screen{
         addObject(hero,750,753);
         Timer timer = Timer.getInstance();
         addObject(timer,70,34);
-        //Hero over sand
-        setPaintOrder(Hero.class, Sand.class);
     }
     // Reads backgrounds
     private void readBackgroundImgs(){
@@ -81,13 +58,8 @@ public class Level extends Screen{
     }
     // Spawns new numbers
     private void spawnNewTrophies(MathModel model){
-        for(Trophy tr: model.getTrophyAnswers()){
+        for(Trophy tr: model.getTrophyAnswers())
             addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
-            while(tr.isTouchingSand()){
-                removeObject(tr);
-                addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
-            } 
-        }
     } 
     /**
      * Static Section

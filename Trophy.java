@@ -19,16 +19,14 @@ public class Trophy extends SmoothMover implements MovingObject{
         if(Level.getLevel() > Level.HEIGHT)
             randomMove(SPEED);
     }
-    // Constructor
+    /**
+     * Constructor for objects of class Trophy
+     */
     public Trophy(MathModel problem, int number){
         this.problem = problem;
         this.number = number;
         setImage(new GreenfootImage(IMAGE_PREFIX + this.number + IMAGE_SUFFIX));
         getImage().scale(60, 60);
-    }
-    
-    public boolean isTouchingSand(){
-        return isTouching(Sand.class) ? true : false;
     }
     // Returns the image's number of the tropgy
     public int getNumber(){
@@ -55,6 +53,6 @@ public class Trophy extends SmoothMover implements MovingObject{
     public void switchImage(String imagePrefix){}
     
     public boolean isTouchingSameObject(){
-        return this.isTouching(Trophy.class) ? true : false;
+        return isTouching(Trophy.class) ? true : false;
     }
 }

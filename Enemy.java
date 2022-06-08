@@ -62,6 +62,6 @@ public class Enemy extends SmoothMover implements MovingObject{
     }
     
     public boolean isTouchingSameObject(){
-        return this.isTouching(Enemy.class) ? true : false;
+        return isTouching(Enemy.class) ? true : false;
     }
 }

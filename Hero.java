@@ -43,7 +43,7 @@ public class Hero extends SmoothMover{
     // Checks which key is being pressed
     private void checkKeyPress(){
         int dx = 0, dy = 0;
-        if(Greenfoot.isKeyDown("left")){
+        if(Greenfoot.isKeyDown("left")){ //FIXME
             dx = !isTouchingSand() ? dx-SPEED : dx-SLOW_SPEED;
             switchImage(IMAGE_LEFT, leftImgCounter);
             leftImgCounter = updateImgCounter(leftImgCounter);

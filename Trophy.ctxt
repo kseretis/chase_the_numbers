@@ -13,4 +13,6 @@ comment5.params=
 comment5.target=int\ getNumber()
 comment6.params=answer
 comment6.target=boolean\ isTheCorrectAnswer(int)
-numComments=7
+comment7.params=
+comment7.target=void\ switchImage()
+numComments=8

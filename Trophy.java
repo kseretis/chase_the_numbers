@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 2
  * @date 24/04/2022
  */
-public class Trophy extends SmoothMover{
+public class Trophy extends SmoothMover implements MovingObject{
     private static final String SUFFIX = ".png";
     private int movingCounter = 0;
     private MathModel problem;
@@ -27,7 +27,7 @@ public class Trophy extends SmoothMover{
         getImage().scale(60, 60);
     }
     // Random move
-    private void randomMove(){
+    public void randomMove(){
         if(movingCounter < 100)
             setLocation(getX() + 1, getY());
         else if(movingCounter < 200)
@@ -47,5 +47,8 @@ public class Trophy extends SmoothMover{
     // Returns if hero is touching the correct trophy    
     public boolean isTheCorrectAnswer(int answer){
         return this.problem.getSolution() == answer ? true : false;
+    }
+    
+    public void switchImage(){
     }
 }

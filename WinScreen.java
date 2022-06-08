@@ -4,10 +4,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The winning screen
  * 
  * @author Seretis Kleanthis 
- * @version 24/04/2022
+ * @version 2
+ * @date 8/6/2022
  */
 public class WinScreen extends Screen{
-    // Constructor
+    /**
+     * Constructor for objects of class WinScreen
+     */
     public WinScreen(){    
         super();
         Timer.restartTimer();

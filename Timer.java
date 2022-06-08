@@ -4,7 +4,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * A class based on Singleton pattern for the timer
  * 
  * @author Seretis Kleanthis 
- * @version 24/04/2022
+ * @version 2
+ * @date 8/6/2022
  */
 public class Timer extends Actor{
     private static final String GAME_OVER_SOUND = "buzzer-gameover.wav";
@@ -12,7 +13,9 @@ public class Timer extends Actor{
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
     private static int timer;
-    // Constructor
+    /**
+     * Constructor for objects of class Timer
+     */
     private Timer(){
         timer = TIME * COUNTER;
         updateImage();

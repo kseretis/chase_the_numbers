@@ -3,6 +3,7 @@ comment0.target=Counter
 comment0.text=\r\n\ A\ Counter\ class\ that\ allows\ you\ to\ display\ a\ numerical\ value\ on\ screen.\r\n\ \r\n\ The\ Counter\ is\ an\ actor,\ so\ you\ will\ need\ to\ create\ it,\ and\ then\ add\ it\ to\r\n\ the\ world\ in\ Greenfoot.\ \ If\ you\ keep\ a\ reference\ to\ the\ Counter\ then\ you\r\n\ can\ adjust\ its\ value.\ \ Here's\ an\ example\ of\ a\ world\ class\ that\r\n\ displays\ a\ counter\ with\ the\ number\ of\ act\ cycles\ that\ have\ occurred\:\r\n\ \r\n\ <pre>\r\n\ class\ CountingWorld\r\n\ {\r\n\ \ \ \ \ private\ Counter\ actCounter;\r\n\ \ \ \ \ \r\n\ \ \ \ \ public\ CountingWorld()\r\n\ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ super(600,\ 400,\ 1);\r\n\ \ \ \ \ \ \ \ \ actCounter\ \=\ new\ Counter("Act\ Cycles\:\ ");\r\n\ \ \ \ \ \ \ \ \ addObject(actCounter,\ 100,\ 100);\r\n\ \ \ \ \ }\r\n\ \ \ \ \ \r\n\ \ \ \ \ public\ void\ act()\r\n\ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ actCounter.setValue(actCounter.getValue()\ +\ 1);\r\n\ \ \ \ \ }\r\n\ }\r\n\ </pre>\r\n\ \r\n\ @author\ Neil\ Brown\ and\ Michael\ K\u00F6lling\ \r\n\ @version\ 1.0\r\n
 comment1.params=
 comment1.target=Counter()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Counter\r\n
 comment2.params=prefix
 comment2.target=Counter(java.lang.String)
 comment2.text=\r\n\ Create\ a\ new\ counter,\ initialised\ to\ 0.\r\n

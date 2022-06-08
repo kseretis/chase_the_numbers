@@ -6,7 +6,7 @@ import java.util.*;
  * of each level
  * 
  * @author Seretis Kleanthis 
- * @version 2
+ * @version 3
  * @date 7/6/2022
  */
 public class Level extends Screen{
@@ -15,7 +15,9 @@ public class Level extends Screen{
     private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
-    // Constructor
+    /**
+     * Constructor for objects of class Level
+     */
     public Level(){    
         super(); 
         readBackgroundImgs();
@@ -24,7 +26,7 @@ public class Level extends Screen{
     }
     // Prepare the level
     private void prepare(){
-        // Spawn Robots
+        // Spawn Robots and Zombies
         addObject(new Robot(getRandomNumber(0, 1)), 450, 556);
         addObject(new Zombie(getRandomNumber(0, 1)), 230, 320);
         
@@ -58,12 +60,12 @@ public class Level extends Screen{
     }
     // Spawns new numbers
     private void spawnNewTrophies(MathModel model){
-        for(Trophy tr: model.getTrophyAnswers())
-            addObject(tr, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
+        for(Number number: model.getNumbers())
+            addObject(number, Greenfoot.getRandomNumber(WIDTH), Greenfoot.getRandomNumber(HEIGHT));
     } 
-    /**
+    /**********************************************
      * Static Section
-     */
+     **********************************************/
     // Update the level
     public static void updateLevel(){
         level++;
@@ -76,5 +78,6 @@ public class Level extends Screen{
     // Restart the level
     public static void restartLevels(){
         level = 1;
+        Timer.getInstance().restartTimer();
     }
 }

@@ -1,8 +1,9 @@
 /**
- * Write a description of class MoovingObject here.
+ * An interface for moving objects
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis
+ * @version 1
+ * @date 8/6/2022
  */
 public interface MovingObject  {
     public abstract void randomMove(int speed);

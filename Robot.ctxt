@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=Robot
 comment0.text=\r\n\ It's\ an\ Enemy\ based\ instance\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \ \r\n\ @version\ 2\r\n\ @date\ 8/6/2022\r\n
-comment1.params=
-comment1.target=void\ act()
-comment2.params=random
-comment2.target=Robot(int)
+comment1.params=random
+comment1.target=Robot(int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Robot\r\n
+comment2.params=
+comment2.target=void\ act()
 numComments=3

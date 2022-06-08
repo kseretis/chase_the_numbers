@@ -4,10 +4,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The initial screen of the game
  * 
  * @author Seretis Kleanthis 
- * @version 24/04/2022
+ * @version 2
+ * @date 8/6/2022
  */
 public class InitialScreen extends Screen{
-    // Constructor
+    /**
+     * Constructor for objects of class InitialScreen
+     */
     public InitialScreen(){    
         super(); 
     }

@@ -7,26 +7,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 2
  * @date 24/04/2022
  */
-public class Trophy extends SmoothMover implements MovingObject{
+public class Number extends SmoothMover implements MovingObject{
     private static final String IMAGE_PREFIX = "Numbers\\";
     private static final String IMAGE_SUFFIX = ".png";
     private static final int SPEED = 1;
     private int movingCounter = 0;
     private MathModel problem;
     private int number;
-    // Act
-    public void act(){
-        if(Level.getLevel() > Level.HEIGHT)
-            randomMove(SPEED);
-    }
     /**
      * Constructor for objects of class Trophy
      */
-    public Trophy(MathModel problem, int number){
+    public Number(MathModel problem, int number){
         this.problem = problem;
         this.number = number;
         setImage(new GreenfootImage(IMAGE_PREFIX + this.number + IMAGE_SUFFIX));
         getImage().scale(60, 60);
+    }
+    // Act
+    public void act(){
+        if(Level.getLevel() > Level.HEIGHT)
+            randomMove(SPEED);
     }
     // Returns the image's number of the tropgy
     public int getNumber(){
@@ -49,10 +49,10 @@ public class Trophy extends SmoothMover implements MovingObject{
             movingCounter = 0;
         movingCounter++;
     }
-    
+    // Image Switch
     public void switchImage(String imagePrefix){}
-    
+    // Touching same object getter    
     public boolean isTouchingSameObject(){
-        return isTouching(Trophy.class) ? true : false;
+        return isTouching(Number.class) ? true : false;
     }
 }

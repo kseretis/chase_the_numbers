@@ -9,13 +9,15 @@ import greenfoot.*;
 public class Robot extends Enemy{
     private static final String IMAGE_PREFIX = "Robot\\Robot_";
     private static final int SPEED = 3;
-
+    /**
+     * Constructor for objects of class Robot
+     */
+    public Robot(int random){
+        super(random);
+    }
+    // act
     public void act(){
         switchImage(IMAGE_PREFIX);
         randomMove(SPEED);
-    }
-
-    public Robot(int random){
-        super(random);
     }
 }

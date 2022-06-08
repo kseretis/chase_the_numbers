@@ -1,13 +1,21 @@
 import java.util.*;
-
+/**
+ * A class that has been created to represent the math model of the game
+ * 
+ * @author Seretis Kleanthis 
+ * @version 2
+ * @date 24/4/2022
+ */
 public class MathModel {
     private int level;
     private String problem;
     private int solution;
-    //private int[] answers;
     private List<Integer> answers = new ArrayList<>();
-    private List<Trophy> trophyAnswers = new ArrayList<>();
-
+    private List<Number> numbers = new ArrayList<>();
+    
+    /**
+     * Constructor for objects of class MathModel
+     */
     public MathModel(int level) {
         this.level = level;
     }
@@ -48,18 +56,13 @@ public class MathModel {
         answers.add(number);
     }
     
-    public List<Trophy> getTrophyAnswers(){
-        return trophyAnswers;
+    public List<Number> getNumbers(){
+        return numbers;
     }
     
-    public void setTrophyAnswers(){
+    public void setNumbers(){
         for(int num: answers){
-            trophyAnswers.add(new Trophy(this, num));
+            numbers.add(new Number(this, num));
         }
     }
-    
-    public Trophy getTrophyAnswer(int index){
-        return trophyAnswers.get(index);
-    }
-
 }

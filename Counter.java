@@ -36,7 +36,9 @@ public class Counter extends Actor{
     private int value;
     private int target;
     private String prefix;
-    
+    /**
+     * Constructor for objects of class Counter
+     */
     public Counter(){
         this(new String());
     }

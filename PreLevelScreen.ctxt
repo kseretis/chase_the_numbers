@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=PreLevelScreen
-comment0.text=\r\n\ The\ Screen\ is\ being\ appeared\ between\ the\ levels\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 24/04/2022\r\n
+comment0.text=\r\n\ The\ Screen\ is\ being\ appeared\ between\ the\ levels\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 2\r\n\ @date\ 8/6/2022\r\n
 comment1.params=
 comment1.target=PreLevelScreen()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PreLevelScreen\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

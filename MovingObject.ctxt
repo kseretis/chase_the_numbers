@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MovingObject
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MoovingObject\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ An\ interface\ for\ moving\ objects\r\n\ \r\n\ @author\ Seretis\ Kleanthis\r\n\ @version\ 1\r\n\ @date\ 8/6/2022\r\n
 comment1.params=speed
 comment1.target=void\ randomMove(int)
 comment2.params=imagePrefix

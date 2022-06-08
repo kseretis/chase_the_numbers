@@ -1,4 +1,5 @@
 import greenfoot.*;
+
 /**
  * This model has created to represent the instance of every single Enemy
  * 
@@ -14,7 +15,6 @@ public class Enemy extends SmoothMover implements MovingObject{
     private int movingCounter;
     private int switchingImgCounter = 0;
     private boolean isMovingRight;
-
     /**
      * Constructor for objects of class Enemy
      */
@@ -22,26 +22,27 @@ public class Enemy extends SmoothMover implements MovingObject{
         this.movingCounter = getRandomDirection(randomNumber);
         //TODO random movement right or left
     }
-    
+    // Returns 0 or 100 for random number received. So, left or right
     public int getRandomDirection(int direction){
         return direction == 0 ? 0 : 100;
     }
-
+    // isMovingRight getter
     public boolean isMovingRight(){
         return isMovingRight;
     }
-    
+    // Builds string path
     public String buildStringPath(String imagePrefix){
         return isMovingRight ? imagePrefix + IMAGE_RIGHT + switchingImgCounter + IMAGE_SUFFIX
                             : imagePrefix + IMAGE_LEFT + switchingImgCounter + IMAGE_SUFFIX;
     }
-
+    // Updates the image counter
     public void updateSwitchingImgCounter(){
         switchingImgCounter = switchingImgCounter < MAXIMUM_IMAGES ? switchingImgCounter+1 : 0;
     }
     /**
      * Implementing abstract methods from MovingObject interface
      */
+    // Random move
     public void randomMove(int speed){ //FIXME
         if(movingCounter < 100){
             setLocation(getX() + speed, getY());
@@ -55,12 +56,12 @@ public class Enemy extends SmoothMover implements MovingObject{
             movingCounter = 0;
         movingCounter++;
     }
-    
+    // Image Switch
     public void switchImage(String imagePrefix){
         setImage(new GreenfootImage(buildStringPath(imagePrefix)));
         updateSwitchingImgCounter();
     }
-    
+    // Touching same object getter
     public boolean isTouchingSameObject(){
         return isTouching(Enemy.class) ? true : false;
     }

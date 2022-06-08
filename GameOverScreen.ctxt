@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=GameOverScreen
-comment0.text=\r\n\ The\ screen\ that\ is\ being\ appeard\ when\ you\ lose\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 24/04/2022\r\n
+comment0.text=\r\n\ The\ screen\ that\ is\ being\ appeard\ when\ you\ lose\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 2\r\n\ @date\ 8/6/2022\r\n
 comment1.params=
 comment1.target=GameOverScreen()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GameOverScreen\r\n
 comment2.params=
 comment2.target=void\ act()
 numComments=3

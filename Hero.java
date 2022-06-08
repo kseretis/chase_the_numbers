@@ -8,7 +8,7 @@ import java.util.*;
  * @date 24/4/2022
  */
 public class Hero extends SmoothMover{
-    private static final int SPEED = 3;         //Normal speed
+    private static final int SPEED = 3;
     private static final int MAXIMUM_IMAGE_NUMBER = 29;
     private static final String IMAGE_PREFIX = "Hero\\Citizen_";
     private static final String IMAGE_FRONT = "front_";
@@ -24,7 +24,9 @@ public class Hero extends SmoothMover{
     private int backImgCounter = 0;
     private int leftImgCounter = 0;
     private int rightImgCounter = 0;
-    // Constructor
+    /**
+     * Constructor for objects of class Hero
+     */
     private Hero(){
         setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
     }
@@ -79,11 +81,11 @@ public class Hero extends SmoothMover{
     }
     // Looking for ballons, if he finds one, he eat it
     private void lookForTrophy(){
-        if(isTouching(Trophy.class)){  
-            Trophy trophy = (Trophy)getOneIntersectingObject(Trophy.class);
-            if(isLevelPassed(trophy))
+        if(isTouching(Number.class)){  
+            Number number = (Number)getOneIntersectingObject(Number.class);
+            if(isLevelPassed(number))
                 startNextLevel();
-            removeTouching(Trophy.class);
+            removeTouching(Number.class);
             Greenfoot.playSound(EAT_NUMBER_SOUND);
         }
     }
@@ -98,7 +100,7 @@ public class Hero extends SmoothMover{
         Greenfoot.setWorld(newScreen);
     }
     // Level passed, based on ballons needed per level
-    private boolean isLevelPassed(Trophy trophy){ 
-        return trophy.isTheCorrectAnswer(trophy.getNumber());
+    private boolean isLevelPassed(Number number){ 
+        return number.isTheCorrectAnswer(number.getNumber());
     }
 }

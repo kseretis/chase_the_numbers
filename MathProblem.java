@@ -1,11 +1,12 @@
 import java.util.*;
 import greenfoot.*;
+
 /**
  * A class based on Singleton pattern, created for math problem that is appearing
  * at the top right of the screen
  * 
  * @author Seretis Kleanthis 
- * @version 1
+ * @version 2
  * @date 05/06/2022
  */
 public class MathProblem extends Actor{
@@ -13,19 +14,21 @@ public class MathProblem extends Actor{
     private static List<MathModel> problems = new ArrayList<>();
     private static MathModel currentMathProblem;
     private static int mathProblemCounter;
-    //act
-    public void act(){
-        setImage(new GreenfootImage(getLevelMathProblem().getProblem() + " = ?", 50, Color.BLACK, Color.WHITE));
-    }
-    // Constructor
+    /**
+     * Constructor for objects of class MathProblem
+     */
     private MathProblem(){
         generateMathProblems();
         mathProblemCounter = 0;
         currentMathProblem = problems.get(mathProblemCounter);
     }
-    /**
-     * Static section
-     */
+    // act
+    public void act(){
+        setImage(new GreenfootImage(getLevelMathProblem().getProblem() + " = ?", 50, Color.BLACK, Color.WHITE));
+    }
+    /**********************************************
+     * Static Section
+     **********************************************/
     // Instance of the math problem
     public static MathProblem getInstance(){
         if(instance == null)
@@ -68,7 +71,7 @@ public class MathProblem extends Actor{
     private static void addAnswers(int[] answers, MathModel model){
         for(int answer: answers)
             model.addAnswer(answer);
-        model.setTrophyAnswers();
+        model.setNumbers();
     }
     // Updates the current math problem and also the counter 
     public static void updateMathProblem(){

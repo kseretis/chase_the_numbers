@@ -1,11 +1,11 @@
 #BlueJ class context
-comment0.target=Trophy
+comment0.target=Number
 comment0.text=\r\n\ A\ class\ created\ for\ the\ trophies\ with\ numbers\ as\ images\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \r\n\ @version\ 2\r\n\ @date\ 24/04/2022\r\n
-comment1.params=
-comment1.target=void\ act()
-comment2.params=problem\ number
-comment2.target=Trophy(MathModel,\ int)
-comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ Trophy\r\n
+comment1.params=problem\ number
+comment1.target=Number(MathModel,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Trophy\r\n
+comment2.params=
+comment2.target=void\ act()
 comment3.params=
 comment3.target=int\ getNumber()
 comment4.params=answer

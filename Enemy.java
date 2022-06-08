@@ -1,8 +1,10 @@
+import greenfoot.*;
 /**
  * This model has created to represent the instance of every single Enemy
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis  
+ * @version 2
+ * @date 8/6/2022
  */
 public class Enemy extends SmoothMover implements MovingObject{
     private static final int MAXIMUM_IMAGES = 8;
@@ -11,13 +13,13 @@ public class Enemy extends SmoothMover implements MovingObject{
     private static final String IMAGE_SUFFIX = ".png";
     private int movingCounter;
     private int switchingImgCounter = 0;
-    private boolean movingRight;
+    private boolean isMovingRight;
 
     /**
      * Constructor for objects of class Enemy
      */
-    public Enemy(int movingCounter){
-        this.movingCounter = getRandomDirection(movingCounter);
+    public Enemy(int randomNumber){
+        this.movingCounter = getRandomDirection(randomNumber);
         //TODO random movement right or left
     }
     
@@ -26,32 +28,40 @@ public class Enemy extends SmoothMover implements MovingObject{
     }
 
     public boolean isMovingRight(){
-        return movingRight;
+        return isMovingRight;
     }
     
     public String buildStringPath(String imagePrefix){
-        return movingRight ? imagePrefix + IMAGE_RIGHT + switchingImgCounter + IMAGE_SUFFIX
+        return isMovingRight ? imagePrefix + IMAGE_RIGHT + switchingImgCounter + IMAGE_SUFFIX
                             : imagePrefix + IMAGE_LEFT + switchingImgCounter + IMAGE_SUFFIX;
     }
 
     public void updateSwitchingImgCounter(){
         switchingImgCounter = switchingImgCounter < MAXIMUM_IMAGES ? switchingImgCounter+1 : 0;
     }
-    
-    public void switchImage(){}
-    
+    /**
+     * Implementing abstract methods from MovingObject interface
+     */
     public void randomMove(int speed){ //FIXME
         if(movingCounter < 100){
             setLocation(getX() + speed, getY());
-            movingRight = true;
+            isMovingRight = true;
         }
         else if(movingCounter < 200){
             setLocation(getX() - speed, getY());
-            movingRight = false;
+            isMovingRight = false;
         }
         else
             movingCounter = 0;
         movingCounter++;
     }
-
+    
+    public void switchImage(String imagePrefix){
+        setImage(new GreenfootImage(buildStringPath(imagePrefix)));
+        updateSwitchingImgCounter();
+    }
+    
+    public boolean isTouchingSameObject(){
+        return this.isTouching(Enemy.class) ? true : false;
+    }
 }

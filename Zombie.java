@@ -1,30 +1,21 @@
 import greenfoot.*;
 /**
- * Write a description of class Zombie here.
+ * It's an Enemy based instance
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis  
+ * @version 2
+ * @date 8/6/2022
  */
 public class Zombie extends Enemy{
     private static final String IMAGE_PREFIX = "Zombie\\Zombie_";
     private static final int SPEED = 1;
 
     public void act(){
-        switchImage();
-        randomMove();
+        switchImage(IMAGE_PREFIX);
+        randomMove(SPEED);
     }
 
     public Zombie(int random){
         super(random);
-    }
-
-    @Override
-    public void switchImage(){
-        setImage(new GreenfootImage(buildStringPath(IMAGE_PREFIX)));
-        updateSwitchingImgCounter();
-    }
-
-    public void randomMove(){
-        super.randomMove(SPEED);
     }
 }

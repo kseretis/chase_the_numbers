@@ -13,13 +13,17 @@ public class WinScreen extends Screen{
      */
     public WinScreen(){    
         super();
-        Timer.restartTimer();
-        Level.restartLevels();
+        restartGame();
     }
     // Act
     public void act(){
         if(Greenfoot.isKeyDown("space"))
             Greenfoot.setWorld(new Level());
-        //TODO restart conmponets
+    }
+    // Restart game
+    public void restartGame(){
+        Timer.restartTimer();
+        Level.restartLevels();
+        MathProblem.restartMathProblem();
     }
 }

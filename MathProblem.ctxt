@@ -19,4 +19,6 @@ comment7.params=answers\ model
 comment7.target=void\ addAnswers(int[],\ MathModel)
 comment8.params=
 comment8.target=void\ updateMathProblem()
-numComments=9
+comment9.params=
+comment9.target=void\ restartMathProblem()
+numComments=10

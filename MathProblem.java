@@ -82,4 +82,9 @@ public class MathProblem extends Actor{
             currentMathProblem = null;
         }
     }
+    // Restart math problem
+    public static void restartMathProblem(){
+        mathProblemCounter = 0;
+        currentMathProblem = problems.get(0);
+    }
 }

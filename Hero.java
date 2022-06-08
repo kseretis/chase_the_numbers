@@ -19,6 +19,7 @@ public class Hero extends SmoothMover{
     private static final String WIN_SOUND = "win.wav";
     private static final String LEVEL_PASSED_SOUND = "level-passed.wav";
     private static final String EAT_NUMBER_SOUND = "whoosh.wav";
+    private static final String TOUCHING_ENEMY_SOUND = "ouch.wav";
     private static Hero singleInstance = null;  //Hero instance
     private int frontImgCounter = 0;
     private int backImgCounter = 0;
@@ -39,6 +40,7 @@ public class Hero extends SmoothMover{
     // act
     public void act(){
         checkKeyPress();
+        checkIfTouchingEnemy();
         lookForTrophy();
     }
     // Checks which key is being pressed
@@ -102,5 +104,14 @@ public class Hero extends SmoothMover{
     // Level passed, based on ballons needed per level
     private boolean isLevelPassed(Number number){ 
         return number.isTheCorrectAnswer(number.getNumber());
+    }
+    
+    private void checkIfTouchingEnemy(){
+        if(isTouchingEnemy())
+            getImage().setTransparency(50);  
+    }
+    
+    private boolean isTouchingEnemy(){
+        return isTouching(Enemy.class);
     }
 }

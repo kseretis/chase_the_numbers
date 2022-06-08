@@ -13,13 +13,15 @@ public class GameOverScreen extends Screen{
      */
     public GameOverScreen(){    
         super(); 
-        Timer.restartTimer();
-        Level.restartLevels();
+        restartLevel();
     }
     // Act
     public void act(){
-        if(Greenfoot.isKeyDown("space")){
-            Greenfoot.setWorld(new Level());
-        }  
+        if(Greenfoot.isKeyDown("space"))
+            Greenfoot.setWorld(new Level()); 
+    }
+    // restart level
+    public void restartLevel(){
+        Timer.restartTimer();
     }
 }

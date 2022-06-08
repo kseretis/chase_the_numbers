@@ -12,6 +12,7 @@ public class Enemy extends SmoothMover implements MovingObject{
     private static final String IMAGE_LEFT = "left_";
     private static final String IMAGE_RIGHT = "right_";
     private static final String IMAGE_SUFFIX = ".png";
+    public static final int MAXIMUM_ENEMIES = 5;
     private int movingCounter;
     private int switchingImgCounter = 0;
     private boolean isMovingRight;

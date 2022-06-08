@@ -6,4 +6,6 @@ comment1.target=WinScreen()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ WinScreen\r\n
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=
+comment3.target=void\ restartGame()
+numComments=4

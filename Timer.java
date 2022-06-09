@@ -19,7 +19,7 @@ public class Timer extends Actor{
      * Constructor for objects of class Timer
      */
     private Timer(){
-        timer = TIME * COUNTER;
+        restartTimer();
         updateImage();
     }
     // Get the instance

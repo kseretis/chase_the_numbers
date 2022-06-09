@@ -16,6 +16,8 @@ public class Level extends Screen{
     private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
     private static final int MINIMUM_Y_SPAWING_POSITION = 50;
     private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 100;
+    private static final int LIVES_Y_POSITION = 65;
+    private static final int LIVES_X_POSITION = 220;
     private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
@@ -39,12 +41,12 @@ public class Level extends Screen{
         addObject(MathProblem.getInstance(), 690, 65);
         
         // Generate math problem
-        MathModel model = MathProblem.getLevelMathProblem();
-        spawnNumbers(model);
+        spawnNumbers(MathProblem.getLevelMathProblem());
         
-        // Instantiate Hero
-        Hero hero = Hero.getInstance();
-        addObject(hero,750,753);
+        // Instantiate Hero and touching timer
+        addObject(Hero.getInstance(),750,753);
+        addObject(TouchingTimer.getInstance(), 0, 0);
+        spawnLives();
         
         // Spawn enemies
         spawnEnemies();
@@ -99,6 +101,13 @@ public class Level extends Screen{
             int y = getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION);
             addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                 getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
+        }
+    }
+    private void spawnLives(){
+        int x = LIVES_X_POSITION;
+        for(Live live: Hero.getInstance().getLives()){
+            addObject(live, x, LIVES_Y_POSITION);
+            x+=100;
         }
     }
     /**********************************************

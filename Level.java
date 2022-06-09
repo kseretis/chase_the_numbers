@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
-    public static final int MAXIMUM_LEVEL = 2;
+    public static final int MAXIMUM_LEVEL = 10;
     private static final int MINIMUM_X_SPAWING_POSITION = 50;
     private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
     private static final int MINIMUM_Y_SPAWING_POSITION = 150;

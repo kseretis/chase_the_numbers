@@ -20,6 +20,7 @@ public class Live extends Actor{
     }
     public void act(){
         setImage(getHeartStatus());
+        getImage().scale(80, 80);
     }
     public boolean isFull(){
         return isFull;

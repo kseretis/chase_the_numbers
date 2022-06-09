@@ -20,6 +20,7 @@ public class Hero extends SmoothMover{
     private static final String LEVEL_PASSED_SOUND = "level-passed.wav";
     private static final String EAT_NUMBER_SOUND = "whoosh.wav";
     private static final String TOUCHING_ENEMY_SOUND = "ouch.wav";
+    private static final String GAME_OVER_SOUND = "buzzer-gameover.wav";
     private static Hero singleInstance = null;  //Hero instance
     private static final int MAXIMUM_LIVES = 3;
     private static final int MINIMUM_LIVES = 0;
@@ -46,6 +47,7 @@ public class Hero extends SmoothMover{
         checkKeyPress();
         checkIfTouchingEnemy();
         lookForTrophy();
+        checkIfLostAllLives();
     }
     // Checks which key is being pressed
     private void checkKeyPress(){
@@ -112,8 +114,10 @@ public class Hero extends SmoothMover{
     }
     
     private void checkIfTouchingEnemy(){
-        if(isTouchingEnemy())
+        if(isTouchingEnemy()){
             getImage().setTransparency(50);  
+            loseLive();
+        }
     }
     
     private boolean isTouchingEnemy(){
@@ -131,5 +135,24 @@ public class Hero extends SmoothMover{
     
     public Live getLive(int index){
         return lives.get(index);
+    }
+    
+    private void loseLive(){
+        lives.get(lives.size()-1).setIsFull(false);
+        lives.remove(lives.size()-1);
+    }
+    
+    private boolean hasLostAllLives(){
+        return lives == null || lives.isEmpty() ? true : false;
+    }
+    
+    private void checkIfLostAllLives(){
+        if(hasLostAllLives())
+            gameOver();
+    }
+    
+    private void gameOver(){
+        Greenfoot.playSound(GAME_OVER_SOUND);
+        Greenfoot.setWorld(new GameOverScreen());
     }
 }

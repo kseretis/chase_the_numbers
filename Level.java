@@ -39,12 +39,18 @@ public class Level extends Screen{
         addObject(MathProblem.getInstance(), 690, 65);
         
         // Generate math problem
-        MathModel model = MathProblem.getLevelMathProblem();
-        spawnNumbers(model);
+        //MathModel model = MathProblem.getLevelMathProblem();
+        spawnNumbers(MathProblem.getLevelMathProblem());
         
         // Instantiate Hero
-        Hero hero = Hero.getInstance();
-        addObject(hero,750,753);
+        //Hero hero = Hero.getInstance();
+        addObject(Hero.getInstance(),750,753);
+        
+        int x = 220;
+        int y = 60;
+        for(Live live: Hero.getInstance().getLives()){
+            addObject(live, x, y);
+        }
         
         // Spawn enemies
         spawnEnemies();

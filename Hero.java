@@ -21,15 +21,19 @@ public class Hero extends SmoothMover{
     private static final String EAT_NUMBER_SOUND = "whoosh.wav";
     private static final String TOUCHING_ENEMY_SOUND = "ouch.wav";
     private static Hero singleInstance = null;  //Hero instance
+    private static final int MAXIMUM_LIVES = 3;
+    private static final int MINIMUM_LIVES = 0;
     private int frontImgCounter = 0;
     private int backImgCounter = 0;
     private int leftImgCounter = 0;
     private int rightImgCounter = 0;
+    private List<Live> lives = new ArrayList<>();
     /**
      * Constructor for objects of class Hero
      */
     private Hero(){
         setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
+        generateLives();
     }
     // Get instance of the hero
     public static Hero getInstance(){
@@ -114,5 +118,18 @@ public class Hero extends SmoothMover{
     
     private boolean isTouchingEnemy(){
         return isTouching(Enemy.class);
+    }
+    
+    private void generateLives(){
+        for(int i = 0; i<MAXIMUM_LIVES; i++)
+            lives.add(new Live());
+    }
+    
+    public List<Live> getLives(){
+        return lives;
+    }
+    
+    public Live getLive(int index){
+        return lives.get(index);
     }
 }

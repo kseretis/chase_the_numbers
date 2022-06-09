@@ -17,7 +17,7 @@ public class Level extends Screen{
     private static final int MINIMUM_Y_SPAWING_POSITION = 50;
     private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 100;
     private static final int LIVES_Y_POSITION = 65;
-    private static int livesXPosition = 220;
+    private static final int LIVES_X_POSITION = 220;
     private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
@@ -47,6 +47,7 @@ public class Level extends Screen{
         // Instantiate Hero
         //Hero hero = Hero.getInstance();
         addObject(Hero.getInstance(),750,753);
+        addObject(TouchingTimer.getInstance(), 0, 0);
         
         generateLives();
         
@@ -108,9 +109,10 @@ public class Level extends Screen{
         }
     }
     private void generateLives(){
+        int x = LIVES_X_POSITION;
         for(Live live: Hero.getInstance().getLives()){
-            addObject(live, livesXPosition, LIVES_Y_POSITION);
-            livesXPosition+=100;
+            addObject(live, x, LIVES_Y_POSITION);
+            x+=100;
         }
     }
     /**********************************************

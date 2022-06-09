@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=TouchingTimer
+comment0.text=\r\n\ This\ class\ was\ created\ in\ order\ to\ count\ down\ the\ time\ between\r\n\ 2\ enemy\ touchings.\ The\ hero\ can\ lose\ live\ only\ every\ 3\ secs\r\n\ \r\n\ @author\ Seretis\ Kleanthis\r\n\ @version\ 1\r\n\ @date\ 9/6/2022\r\n
+comment1.params=
+comment1.target=TouchingTimer()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Timer\r\n
+comment2.params=
+comment2.target=TouchingTimer\ getInstance()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ startTimer()
+comment5.params=
+comment5.target=void\ stopTimer()
+comment6.params=
+comment6.target=void\ restartTimer()
+comment7.params=
+comment7.target=boolean\ isCountingDown()
+numComments=8

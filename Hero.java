@@ -29,12 +29,14 @@ public class Hero extends SmoothMover{
     private int leftImgCounter = 0;
     private int rightImgCounter = 0;
     private List<Live> lives = new ArrayList<>();
+    private boolean hasTouchedEnemy;
     /**
      * Constructor for objects of class Hero
      */
     private Hero(){
         setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
         generateLives();
+        this.hasTouchedEnemy = false;
     }
     // Get instance of the hero
     public static Hero getInstance(){
@@ -112,45 +114,48 @@ public class Hero extends SmoothMover{
     private boolean isLevelPassed(Number number){ 
         return number.isTheCorrectAnswer(number.getNumber());
     }
-    
+    // Check if touching enemy
     private void checkIfTouchingEnemy(){
         if(isTouchingEnemy()){
-            getImage().setTransparency(50);  
-            loseLive();
+            if(!TouchingTimer.getInstance().isCountingDown()){
+                TouchingTimer.getInstance().startTimer();
+                getImage().setTransparency(50);
+                loseLive();
+            }
         }
     }
-    
+    // touching enemy getter
     private boolean isTouchingEnemy(){
         return isTouching(Enemy.class);
     }
-    
+    // Generates the initial 3 lives
     private void generateLives(){
         for(int i = 0; i<MAXIMUM_LIVES; i++)
             lives.add(new Live());
     }
-    
+    // Lives getter
     public List<Live> getLives(){
         return lives;
     }
-    
+    // Get single live
     public Live getLive(int index){
         return lives.get(index);
     }
-    
+    // Lose live and triggers the live to change the image
     private void loseLive(){
         lives.get(lives.size()-1).setIsFull(false);
         lives.remove(lives.size()-1);
     }
-    
+    // Checks the lives list if it's null or empty
     private boolean hasLostAllLives(){
         return lives == null || lives.isEmpty() ? true : false;
     }
-    
+    // Checks if hero has lost all of his lives
     private void checkIfLostAllLives(){
         if(hasLostAllLives())
             gameOver();
     }
-    
+    // Triggers game over screen
     private void gameOver(){
         Greenfoot.playSound(GAME_OVER_SOUND);
         Greenfoot.setWorld(new GameOverScreen());

@@ -10,7 +10,7 @@ import java.lang.*;
  */
 public class Timer extends Actor{
     private static final String GAME_OVER_SOUND = "buzzer-gameover.wav";
-    private static final int TIME = 15;
+    private static final int TIME = 100;
     private static final int COUNTER = 55;
     private static Timer singleInstance = null;
     private static int timer;
@@ -19,7 +19,7 @@ public class Timer extends Actor{
      * Constructor for objects of class Timer
      */
     private Timer(){
-        timer = TIME * COUNTER;
+        restartTimer();
         updateImage();
     }
     // Get the instance

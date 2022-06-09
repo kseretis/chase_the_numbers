@@ -26,5 +26,5 @@ comment7.target=void\ spawnEnemies()
 comment8.params=enemy
 comment8.target=void\ spawnEnemy(Enemy)
 comment9.params=
-comment9.target=void\ generateLives()
+comment9.target=void\ spawnLives()
 numComments=13

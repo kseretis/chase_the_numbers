@@ -13,7 +13,7 @@ public class TouchingTimer extends Actor{
     private static final int COUNTER = 55;
     private static TouchingTimer singleInstance = null;
     private static int timer;
-    private boolean isCountingDown = false;
+    private static boolean isCountingDown = false;
     /**
      * Constructor for objects of class Timer
      */
@@ -35,20 +35,21 @@ public class TouchingTimer extends Actor{
         }
     }
     // Starts the timer
-    public void startTimer(){
+    public static void startTimer(){
         restartTimer();
         isCountingDown = true;
     }
     // Stops the timer
-    public void stopTimer(){
-        isCountingDown = false;
+    public static void stopTimer(){
+        restartTimer();
     }
     // Restarts the counter
-    public void restartTimer(){
+    public static void restartTimer(){
         timer = TIME * COUNTER;
+        isCountingDown = false;
     }
     // isCountingDown getter
-    public boolean isCountingDown(){
+    public static boolean isCountingDown(){
         return isCountingDown;
     }
 }

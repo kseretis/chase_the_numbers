@@ -23,20 +23,19 @@ public class Hero extends SmoothMover{
     private static final String GAME_OVER_SOUND = "buzzer-gameover.wav";
     private static Hero singleInstance = null;  //Hero instance
     private static final int MAXIMUM_LIVES = 3;
-    private static final int MINIMUM_LIVES = 0;
     private int frontImgCounter = 0;
     private int backImgCounter = 0;
     private int leftImgCounter = 0;
     private int rightImgCounter = 0;
     private List<Live> lives = new ArrayList<>();
-    private boolean hasTouchedEnemy;
+    private int livesLeft;
     /**
      * Constructor for objects of class Hero
      */
     private Hero(){
         setImage(new GreenfootImage(IMAGE_PREFIX + IMAGE_LEFT + frontImgCounter + IMAGE_SUFFIX));
         generateLives();
-        this.hasTouchedEnemy = false;
+        this.livesLeft = livesLeft();
     }
     // Get instance of the hero
     public static Hero getInstance(){
@@ -118,11 +117,13 @@ public class Hero extends SmoothMover{
     private void checkIfTouchingEnemy(){
         if(isTouchingEnemy()){
             if(!TouchingTimer.getInstance().isCountingDown()){
-                TouchingTimer.getInstance().startTimer();
-                getImage().setTransparency(50);
+                TouchingTimer.startTimer();
+                Greenfoot.playSound(TOUCHING_ENEMY_SOUND);
                 loseLive();
             }
         }
+        int transparency = TouchingTimer.isCountingDown() ? 50 : 255;
+        getImage().setTransparency(transparency);
     }
     // touching enemy getter
     private boolean isTouchingEnemy(){
@@ -133,6 +134,12 @@ public class Hero extends SmoothMover{
         for(int i = 0; i<MAXIMUM_LIVES; i++)
             lives.add(new Live());
     }
+    // Resets the hero's lives
+    public void resetHeroLives(){
+        livesLeft = MAXIMUM_LIVES;
+        for(Live live: lives)
+            live.setIsFull(true);
+    }
     // Lives getter
     public List<Live> getLives(){
         return lives;
@@ -141,14 +148,22 @@ public class Hero extends SmoothMover{
     public Live getLive(int index){
         return lives.get(index);
     }
+    // Return how many lives left
+    private int livesLeft(){
+        int livesLeft = 0;
+        for(Live live: lives)
+            if(live.isFull())
+                livesLeft++;
+        return livesLeft;
+    }
     // Lose live and triggers the live to change the image
     private void loseLive(){
-        lives.get(lives.size()-1).setIsFull(false);
-        lives.remove(lives.size()-1);
+        this.livesLeft--;
+        lives.get(this.livesLeft).setIsFull(false);
     }
     // Checks the lives list if it's null or empty
     private boolean hasLostAllLives(){
-        return lives == null || lives.isEmpty() ? true : false;
+        return livesLeft() < 1;
     }
     // Checks if hero has lost all of his lives
     private void checkIfLostAllLives(){

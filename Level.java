@@ -41,17 +41,12 @@ public class Level extends Screen{
         addObject(MathProblem.getInstance(), 690, 65);
         
         // Generate math problem
-        //MathModel model = MathProblem.getLevelMathProblem();
         spawnNumbers(MathProblem.getLevelMathProblem());
         
-        // Instantiate Hero
-        //Hero hero = Hero.getInstance();
+        // Instantiate Hero and touching timer
         addObject(Hero.getInstance(),750,753);
         addObject(TouchingTimer.getInstance(), 0, 0);
-        
-        generateLives();
-        
-        
+        spawnLives();
         
         // Spawn enemies
         spawnEnemies();
@@ -108,7 +103,7 @@ public class Level extends Screen{
                                 getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
         }
     }
-    private void generateLives(){
+    private void spawnLives(){
         int x = LIVES_X_POSITION;
         for(Live live: Hero.getInstance().getLives()){
             addObject(live, x, LIVES_Y_POSITION);

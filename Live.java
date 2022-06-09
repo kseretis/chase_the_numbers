@@ -18,17 +18,20 @@ public class Live extends Actor{
     public Live(){
         this.isFull = true;
     }
+    // act
     public void act(){
         setImage(getHeartStatus());
         getImage().scale(80, 80);
     }
+    // Full or empty live getter
     public boolean isFull(){
         return isFull;
     }
+    // Full or empty live setter
     public void setIsFull(boolean isFull){
         this.isFull = isFull;
     }
-    
+    // String getter for applying the image 
     private String getHeartStatus(){
         return isFull() ? FULL_HEART + SUFFIX : EMPTY_HEART + SUFFIX;
     }

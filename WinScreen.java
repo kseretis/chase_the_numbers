@@ -25,5 +25,7 @@ public class WinScreen extends Screen{
         Timer.restartTimer();
         Level.restartLevels();
         MathProblem.restartMathProblem();
+        Hero.getInstance().resetHeroLives();
+        TouchingTimer.restartTimer();
     }
 }

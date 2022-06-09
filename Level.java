@@ -14,10 +14,10 @@ public class Level extends Screen{
     public static final int MAXIMUM_LEVEL = 2;
     private static final int MINIMUM_X_SPAWING_POSITION = 50;
     private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
-    private static final int MINIMUM_Y_SPAWING_POSITION = 50;
-    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 100;
+    private static final int MINIMUM_Y_SPAWING_POSITION = 150;
+    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 200;
     private static final int LIVES_Y_POSITION = 65;
-    private static final int LIVES_X_POSITION = 220;
+    private static final int LIVES_X_POSITION = 255;
     private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
@@ -37,8 +37,8 @@ public class Level extends Screen{
         addObject(Timer.getInstance(), 65, 65);
         
         // Setup blackboard
-        addObject(new Blackboard(), 690, 70);
-        addObject(MathProblem.getInstance(), 690, 65);
+        addObject(new Blackboard(), 640, 70);
+        addObject(MathProblem.getInstance(), 620, 65);
         
         // Generate math problem
         spawnNumbers(MathProblem.getLevelMathProblem());
@@ -107,7 +107,7 @@ public class Level extends Screen{
         int x = LIVES_X_POSITION;
         for(Live live: Hero.getInstance().getLives()){
             addObject(live, x, LIVES_Y_POSITION);
-            x+=100;
+            x+=90;
         }
     }
     /**********************************************

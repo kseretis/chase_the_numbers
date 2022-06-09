@@ -21,7 +21,7 @@ public class Live extends Actor{
     // act
     public void act(){
         setImage(getHeartStatus());
-        getImage().scale(80, 80);
+        getImage().scale(60, 60);
     }
     // Full or empty live getter
     public boolean isFull(){

@@ -21,7 +21,7 @@ public class Enemy extends SmoothMover implements MovingObject{
      */
     public Enemy(int randomNumber){
         this.movingCounter = getRandomDirection(randomNumber);
-    }
+     }
     // Returns 0 or 100 for random number received. So, left or right
     public int getRandomDirection(int direction){
         return direction == 0 ? 0 : 100;

@@ -9,6 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Blackboard extends Board{
     public void act(){
-        getImage().scale(160, 120);
+        getImage().scale(260, 120);
     }
 }

@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 2
  * @date 8/6/2022
  */
-public class Screen extends World{
+public class Screen extends World implements ScreenActions{
     public static final int WIDTH = 800;
     public static final int HEIGHT = 800;
     /**
@@ -16,4 +16,11 @@ public class Screen extends World{
     public Screen(){    
         super(WIDTH, HEIGHT, 1); 
     }
+    /**
+     * Implementing ScreenActions' methods
+     */
+    public void checkKeyDown(Screen newScreen){
+        if(Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space"))
+            Greenfoot.setWorld(newScreen);
+    }   
 }

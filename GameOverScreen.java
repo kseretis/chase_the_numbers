@@ -17,8 +17,7 @@ public class GameOverScreen extends Screen{
     }
     // Act
     public void act(){
-        if(Greenfoot.isKeyDown("space"))
-            Greenfoot.setWorld(new Level()); 
+        checkKeyDown(new Level());
     }
     // restart level
     public void restartLevel(){

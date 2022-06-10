@@ -16,7 +16,6 @@ public class InitialScreen extends Screen{
     }
     // Act
     public void act(){
-        if(Greenfoot.isKeyDown("enter"))
-            Greenfoot.setWorld(new Level());
+        checkKeyDown(new Level());
     }
 }

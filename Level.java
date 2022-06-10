@@ -73,7 +73,7 @@ public class Level extends Screen{
             getRandomNumber(50, WIDTH);
             addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                 getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            while(number.isTouchingNumber() || number.isTouchingBoard()){
+            while(number.isTouchingNumber()){
                 removeObject(number);
                 addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                     getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
@@ -98,7 +98,7 @@ public class Level extends Screen{
         addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
                             getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
         availableZone.setIsAvailable(false);
-        /*while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
+        /*while(enemy.isTouchingSameObject()){
             removeObject(enemy);
             addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                 getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));

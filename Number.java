@@ -35,8 +35,4 @@ public class Number extends SmoothMover{
     public boolean isTouchingNumber(){
         return isTouching(Number.class);
     }
-    // Touching board class getter
-    public boolean isTouchingBoard(){
-        return isTouching(Board.class);
-    }
 }

@@ -16,6 +16,7 @@ public class Zone {
     private int endingY;
     private boolean leftOrRight; //true for left, false for right
     private boolean isAvailable;
+    private boolean isAvailableForNumber;
     
     public Zone(int startingY, int endingY, boolean leftOrRight){
         this.startingY = startingY;
@@ -23,6 +24,7 @@ public class Zone {
         this.leftOrRight = leftOrRight;
         setUpZoneLeftOrRight();
         this.isAvailable = true;
+        this.isAvailableForNumber = true;
     }
     // 100-400px for left, 400-700px for right
     private void setUpZoneLeftOrRight(){
@@ -53,4 +55,12 @@ public class Zone {
     public int getEndingY(){
         return endingY;
     }
+    
+    public void setIsAvailableForNumber(boolean isAvailableForNumber){
+        this.isAvailableForNumber = isAvailableForNumber;
+    }
+    
+    public boolean isAvailableForNumber(){
+        return isAvailableForNumber;
+    } 
 }

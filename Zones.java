@@ -47,6 +47,14 @@ public class Zones  {
         }while(!zone.isAvailable());
         return zone;
     }
+    // Returns an available zone for number
+    public static Zone lookForRandomAvailableZoneForNumber(){
+        Zone zone;
+        do{
+            zone = zones.get(Greenfoot.getRandomNumber(zones.size()));
+        }while(!zone.isAvailableForNumber());
+        return zone;
+    }
     // restarts the zones' availability
     public void restartZonesAvailability(){
         for(Zone zone: zones)

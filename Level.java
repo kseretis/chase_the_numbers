@@ -70,14 +70,18 @@ public class Level extends Screen{
     // Spawns new numbers
     private void spawnNumbers(MathModel model){
         for(Number number: model.getNumbers()){
-            getRandomNumber(50, WIDTH);
+            /*getRandomNumber(50, WIDTH);
             addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                 getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
             while(number.isTouchingNumber()){
                 removeObject(number);
                 addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
                                     getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            }
+            }*/
+            Zone availableZone = Zones.lookForRandomAvailableZoneForNumber();
+            addObject(number, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
+                                getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+            availableZone.setIsAvailableForNumber(false);
         }
     }
     // Spawns enemies based on level

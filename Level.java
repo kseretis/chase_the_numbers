@@ -6,8 +6,8 @@ import java.util.*;
  * of each level
  * 
  * @author Seretis Kleanthis 
- * @version 3
- * @date 7/6/2022
+ * @version 4
+ * @date 10/6/2022
  */
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
@@ -91,6 +91,8 @@ public class Level extends Screen{
             spawnEnemy(new Robot(getRandomNumber(0, 1)));
         if(level > 4)
             spawnEnemy(new Zombie(getRandomNumber(0, 1)));
+        if(level > 5)
+            spawnEnemy(new Zombie(getRandomNumber(0, 1)));
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
@@ -98,12 +100,8 @@ public class Level extends Screen{
         addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
                             getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
         availableZone.setIsAvailable(false);
-        /*while(enemy.isTouchingSameObject()){
-            removeObject(enemy);
-            addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
-        }*/
     }
+    // Spawn lives at the top of the screen
     private void spawnLives(){
         int x = LIVES_X_POSITION;
         for(Live live: Hero.getInstance().getLives()){

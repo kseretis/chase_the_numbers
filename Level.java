@@ -6,18 +6,18 @@ import java.util.*;
  * of each level
  * 
  * @author Seretis Kleanthis 
- * @version 3
- * @date 7/6/2022
+ * @version 4
+ * @date 10/6/2022
  */
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
-    public static final int MAXIMUM_LEVEL = 2;
+    public static final int MAXIMUM_LEVEL = 10;
     private static final int MINIMUM_X_SPAWING_POSITION = 50;
     private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
-    private static final int MINIMUM_Y_SPAWING_POSITION = 50;
-    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 100;
+    private static final int MINIMUM_Y_SPAWING_POSITION = 150;
+    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 200;
     private static final int LIVES_Y_POSITION = 65;
-    private static final int LIVES_X_POSITION = 220;
+    private static final int LIVES_X_POSITION = 255;
     private static int level = INIT_LEVEL;
     private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
@@ -37,13 +37,16 @@ public class Level extends Screen{
         addObject(Timer.getInstance(), 65, 65);
         
         // Setup blackboard
-        addObject(new Blackboard(), 690, 70);
-        addObject(MathProblem.getInstance(), 690, 65);
+        addObject(new Blackboard(), 640, 70);
+        addObject(MathProblem.getInstance(), 620, 65);
+        
+        // Initialize Zones
+        Zones.getInstance().restartZonesAvailability();
         
         // Generate math problem
         spawnNumbers(MathProblem.getLevelMathProblem());
         
-        // Instantiate Hero and touching timer
+        // Instantiate Hero, touching timer and lives
         addObject(Hero.getInstance(),750,753);
         addObject(TouchingTimer.getInstance(), 0, 0);
         spawnLives();
@@ -62,21 +65,17 @@ public class Level extends Screen{
     private void setRandombackground(){
         setBackground(backgrounds.get(getRandomNumber(0, 2)));
     }
-    // Gets rancom number in range
+    // Gets random number in range
     private int getRandomNumber(int min, int max){
         return Greenfoot.getRandomNumber(max - min + 1) + min;
     }
     // Spawns new numbers
     private void spawnNumbers(MathModel model){
         for(Number number: model.getNumbers()){
-            getRandomNumber(50, WIDTH);
-            addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            while(number.isTouchingNumber() || number.isTouchingBoard()){
-                removeObject(number);
-                addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                    getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            }
+            Zone availableZone = Zones.lookForNumberRandomAvailableZone();
+            addObject(number, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
+                                getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+            availableZone.setIsAvailableForNumber(false);
         }
     }
     // Spawns enemies based on level
@@ -90,24 +89,22 @@ public class Level extends Screen{
             spawnEnemy(new Robot(getRandomNumber(0, 1)));
         if(level > 4)
             spawnEnemy(new Zombie(getRandomNumber(0, 1)));
+        if(level > 5)
+            spawnEnemy(new Zombie(getRandomNumber(0, 1)));
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
-        addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                            getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-        while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
-            removeObject(enemy);
-            int x = getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION);
-            int y = getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION);
-            addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-        }
+        Zone availableZone = Zones.lookForEnemyRandomAvailableZone();
+        addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
+                            getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+        availableZone.setIsAvailableForEnemy(false);
     }
+    // Spawn lives at the top of the screen
     private void spawnLives(){
         int x = LIVES_X_POSITION;
         for(Live live: Hero.getInstance().getLives()){
             addObject(live, x, LIVES_Y_POSITION);
-            x+=100;
+            x+=90;
         }
     }
     /**********************************************

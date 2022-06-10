@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Zones
+comment0.text=\r\n\ This\ class\ works\ as\ a\ holder\ for\ the\ zones\ that\ the\ enemies/numbers\r\n\ can\ be\ spawned\r\n\ Based\ on\ Singleton\ Pattern\r\n\ \r\n\ @author\ Seretis\ Kleanthis\r\n\ @version\ 1\r\n\ @date\ 10/6/2022\r\n
+comment1.params=
+comment1.target=Zones()
+comment2.params=
+comment2.target=Zones\ getInstance()
+comment3.params=
+comment3.target=void\ initializeZones()
+comment4.params=
+comment4.target=Zone\ lookForEnemyRandomAvailableZone()
+comment5.params=
+comment5.target=Zone\ lookForNumberRandomAvailableZone()
+comment6.params=
+comment6.target=void\ restartZonesAvailability()
+numComments=7

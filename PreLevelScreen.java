@@ -16,7 +16,6 @@ public class PreLevelScreen extends Screen{
     }
     // Act
     public void act(){
-        if(Greenfoot.isKeyDown("Enter"))
-            Greenfoot.setWorld(new Level());
+        checkKeyDown(new Level());
     }
 }

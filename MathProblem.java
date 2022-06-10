@@ -27,6 +27,69 @@ public class MathProblem extends Actor{
     public void act(){
         setImage(new GreenfootImage(getLevelMathProblem().getProblem() + " = ?", 32, Color.WHITE, lettersColor));
     }
+    // Generates for the very first time the math problems
+    private void generateMathProblems(){
+        for(int i=1; i<=Level.MAXIMUM_LEVEL; i++) 
+            problems.add(generateMathProblem(i));
+    }
+    // Generates problems based on level
+    private MathModel generateMathProblem(int level){
+        MathModel model = new MathModel(level);
+        HashSet<Integer> answers = new HashSet<>();
+        switch (level){
+            case 1:
+                model.setProblem("4 + 3");
+                model.setSolution(7);
+                break;
+            case 2:
+                model.setProblem("19 - 11");
+                model.setSolution(8);
+                break;
+            case 3:
+                model.setProblem("18 - 7 + 3");
+                model.setSolution(14);
+                break;
+            case 4:
+                model.setProblem("2 * 6");
+                model.setSolution(12);
+                break;
+            case 5:
+                model.setProblem("10 / 5");
+                model.setSolution(2);
+                break;
+            case 6:
+                model.setProblem("10 / 2");
+                model.setSolution(5);
+                break;
+            case 7:
+                model.setProblem("(2 * 4) + 5");
+                model.setSolution(13);
+                break;
+            case 8:
+                model.setProblem("19 - 22 + 4");
+                model.setSolution(1);
+                break;
+            case 9:
+                model.setProblem("12 / (20 - 17)");
+                model.setSolution(4);
+                break;
+            case 10:
+                model.setProblem("1 + 2 * 4");
+                model.setSolution(9);
+                break;
+        }
+        answers.add(model.getSolution());
+        model.setAnswers(getRandomAnswers(answers));
+        model.setNumbers();
+        return model;
+    }
+    // Returns a set with integers with random numbers in a standard range
+    private HashSet<Integer> getRandomAnswers(HashSet<Integer> answers){
+        while(answers.size() < MathModel.MAXIMUM_ANSWERS){
+            answers.add(Greenfoot.getRandomNumber(MathModel.ANSWER_RANGE) + 1); 
+        }
+        return answers;
+    }
     /**********************************************
      * Static Section
      **********************************************/
@@ -39,40 +102,6 @@ public class MathProblem extends Actor{
     // Returns the current math problem
     public static MathModel getLevelMathProblem(){
         return currentMathProblem;
-    }
-    // Generates for the very first time the math problems
-    private static void generateMathProblems(){
-        for(int i=1; i<=2; i++) //FIXME
-            problems.add(generateMathProblem(i));
-    }
-    // Generates problems based on level
-    private static MathModel generateMathProblem(int level){
-        MathModel model = new MathModel(level);
-        int[] answers;
-        switch (level){
-            case 1:
-                model.setProblem("4 + 3");
-                model.setSolution(7);
-                answers = new int[]{2, 3, 4, 5, 7};
-                addAnswers(answers, model);
-                break;
-            case 2:
-                model.setProblem("19 - 11");
-                model.setSolution(8);
-                answers = new int[]{5, 11, 8, 4, 13};
-                addAnswers(answers, model);
-                break;
-            case 3:
-            case 4:
-            case 5:
-        }
-        return model;
-    }
-    // Adds answer as trophy instances to the model
-    private static void addAnswers(int[] answers, MathModel model){
-        for(int answer: answers)
-            model.addAnswer(answer);
-        model.setNumbers();
     }
     // Updates the current math problem and also the counter 
     public static void updateMathProblem(){

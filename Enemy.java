@@ -12,7 +12,7 @@ public class Enemy extends SmoothMover implements MovingObject{
     private static final String IMAGE_LEFT = "left_";
     private static final String IMAGE_RIGHT = "right_";
     private static final String IMAGE_SUFFIX = ".png";
-    public static final int MAXIMUM_ENEMIES = 5;
+    public static final int MAXIMUM_ENEMIES = 6;
     private int movingCounter;
     private int switchingImgCounter = 0;
     private boolean isMovingRight;
@@ -21,7 +21,7 @@ public class Enemy extends SmoothMover implements MovingObject{
      */
     public Enemy(int randomNumber){
         this.movingCounter = getRandomDirection(randomNumber);
-    }
+     }
     // Returns 0 or 100 for random number received. So, left or right
     public int getRandomDirection(int direction){
         return direction == 0 ? 0 : 100;
@@ -64,13 +64,5 @@ public class Enemy extends SmoothMover implements MovingObject{
     // Touching same object getter
     public boolean isTouchingSameObject(){
         return isTouching(Enemy.class);
-    }
-    // Touching board getter
-    public boolean isTouchingBoard(){
-        return isTouching(Board.class);
-    }
-    // Touching hero getter
-    public boolean isTouchingHero(){
-        return isTouching(Hero.class);
     }
 }

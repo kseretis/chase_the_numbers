@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class Robot extends Enemy{
     private static final String IMAGE_PREFIX = "Robot\\Robot_";
-    private static final int SPEED = 3;
+    private static final int SPEED = 2;
     /**
      * Constructor for objects of class Robot
      */

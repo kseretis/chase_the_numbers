@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Zone
+comment0.text=\r\n\ This\ class\ is\ created\ to\ hold\ the\ data\ for\ the\ model\ zone\r\n\ Contains\ the\ rabges\ of\ the\ positions\ X-Y\r\n\ \r\n\ @author\ Seretis\ Kleanthis\r\n\ @version\ 1\r\n\ @date\ 10/6/2022\r\n
+comment1.params=startingY\ endingY\ leftOrRight
+comment1.target=Zone(int,\ int,\ boolean)
+comment10.params=
+comment10.target=boolean\ isAvailableForNumber()
+comment11.params=
+comment11.target=void\ restartAvailability()
+comment2.params=
+comment2.target=void\ setUpZoneLeftOrRight()
+comment3.params=
+comment3.target=int\ getStartingX()
+comment4.params=
+comment4.target=int\ getEndingX()
+comment5.params=
+comment5.target=int\ getStartingY()
+comment6.params=
+comment6.target=int\ getEndingY()
+comment7.params=isAvailable
+comment7.target=void\ setIsAvailableForEnemy(boolean)
+comment8.params=
+comment8.target=boolean\ isAvailableForEnemy()
+comment9.params=isAvailable
+comment9.target=void\ setIsAvailableForNumber(boolean)
+numComments=12

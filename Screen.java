@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * A super class that holds the numbers of the screen size
  * 
  * @author Seretis Kleanthis 
- * @version 2
+ * @version 3
  * @date 8/6/2022
  */
 public class Screen extends World implements ScreenActions{

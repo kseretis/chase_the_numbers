@@ -28,10 +28,6 @@ public class Timer extends Actor{
             singleInstance = new Timer();
         return singleInstance;
     }
-    // Update timer
-    public static void updateTime(int seconds){
-        timer += (seconds * COUNTER);
-    }
     // Restar timer
     public static void restartTimer(){
         timer = TIME * COUNTER;

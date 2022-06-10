@@ -10,6 +10,4 @@ comment3.params=
 comment3.target=int\ getNumber()
 comment4.params=answer
 comment4.target=boolean\ isTheCorrectAnswer(int)
-comment5.params=
-comment5.target=boolean\ isTouchingNumber()
-numComments=6
+numComments=5

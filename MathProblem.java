@@ -78,22 +78,16 @@ public class MathProblem extends Actor{
                 model.setSolution(9);
                 break;
         }
-        answers = getRandomAnswers();
         answers.add(model.getSolution());
-        model.setAnswers(answers);
+        model.setAnswers(getRandomAnswers(answers));
         model.setNumbers();
-        System.out.println("answers -> " + model.getAnswers().size());
-        System.out.println("numbers -> " +model.getNumbers().size());
         return model;
     }
     // Returns a set with integers with random numbers in a standard range
-    private HashSet<Integer> getRandomAnswers(){
-        HashSet<Integer> answers = new LinkedHashSet<>();
-        // bug here //FIXME
-        do{
-            answers.add(Greenfoot.getRandomNumber(MathModel.ANSWER_RANGE) + 1);  
-        }while(answers.size() == MathModel.MAXIMUM_ANSWERS);
-            
+    private HashSet<Integer> getRandomAnswers(HashSet<Integer> answers){
+        while(answers.size() < MathModel.MAXIMUM_ANSWERS){
+            answers.add(Greenfoot.getRandomNumber(MathModel.ANSWER_RANGE) + 1); 
+        }
         return answers;
     }
     /**********************************************

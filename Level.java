@@ -40,16 +40,18 @@ public class Level extends Screen{
         addObject(new Blackboard(), 640, 70);
         addObject(MathProblem.getInstance(), 620, 65);
         
+        // Initialize Zones
+        Zones.getInstance().restartZonesAvailability();
+        
         // Generate math problem
         spawnNumbers(MathProblem.getLevelMathProblem());
         
-        // Instantiate Hero and touching timer
+        // Instantiate Hero, touching timer and lives
         addObject(Hero.getInstance(),750,753);
         addObject(TouchingTimer.getInstance(), 0, 0);
         spawnLives();
         
-        // Initialize Zones and spawn enemies
-        Zones.getInstance().restartZonesAvailability();
+        // Spawn enemies
         spawnEnemies();
         setPaintOrder(Enemy.class, Number.class);
     }
@@ -70,15 +72,7 @@ public class Level extends Screen{
     // Spawns new numbers
     private void spawnNumbers(MathModel model){
         for(Number number: model.getNumbers()){
-            /*getRandomNumber(50, WIDTH);
-            addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            while(number.isTouchingNumber()){
-                removeObject(number);
-                addObject(number, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                    getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-            }*/
-            Zone availableZone = Zones.lookForRandomAvailableZoneForNumber();
+            Zone availableZone = Zones.lookForNumberRandomAvailableZone();
             addObject(number, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
                                 getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
             availableZone.setIsAvailableForNumber(false);
@@ -100,10 +94,10 @@ public class Level extends Screen{
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
-        Zone availableZone = Zones.lookForRandomAvailableZone();
+        Zone availableZone = Zones.lookForEnemyRandomAvailableZone();
         addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
                             getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
-        availableZone.setIsAvailable(false);
+        availableZone.setIsAvailableForEnemy(false);
     }
     // Spawn lives at the top of the screen
     private void spawnLives(){

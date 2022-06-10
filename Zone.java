@@ -15,7 +15,7 @@ public class Zone {
     private int startingY;
     private int endingY;
     private boolean leftOrRight; //true for left, false for right
-    private boolean isAvailable;
+    private boolean isAvailableForEnemy;
     private boolean isAvailableForNumber;
     
     public Zone(int startingY, int endingY, boolean leftOrRight){
@@ -23,7 +23,7 @@ public class Zone {
         this.endingY = endingY;
         this.leftOrRight = leftOrRight;
         setUpZoneLeftOrRight();
-        this.isAvailable = true;
+        this.isAvailableForEnemy = true;
         this.isAvailableForNumber = true;
     }
     // 100-400px for left, 400-700px for right
@@ -31,15 +31,7 @@ public class Zone {
         this.startingX = leftOrRight ? STARTING_X : MID_X;
         this.endingX = leftOrRight ? MID_X : ENDING_X; 
     }
-    
-    public void setIsAvailable(boolean isAvailable){
-        this.isAvailable = isAvailable;
-    }
-    
-    public boolean isAvailable(){
-        return isAvailable;
-    }
-    
+
     public int getStartingX(){
         return startingX;
     }
@@ -56,11 +48,24 @@ public class Zone {
         return endingY;
     }
     
-    public void setIsAvailableForNumber(boolean isAvailableForNumber){
-        this.isAvailableForNumber = isAvailableForNumber;
+    public void setIsAvailableForEnemy(boolean isAvailable){
+        this.isAvailableForEnemy = isAvailable;
+    }
+    
+    public boolean isAvailableForEnemy(){
+        return isAvailableForEnemy;
+    }
+    
+    public void setIsAvailableForNumber(boolean isAvailable){
+        this.isAvailableForNumber = isAvailable;
     }
     
     public boolean isAvailableForNumber(){
         return isAvailableForNumber;
-    } 
+    }
+    
+    public void restartAvailability(){
+        this.isAvailableForEnemy = true;
+        this.isAvailableForNumber = true;
+    }
 }

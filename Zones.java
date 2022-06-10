@@ -39,16 +39,16 @@ public class Zones  {
         zones.add(new Zone(ZONE4_STARTING_Y, ZONE4_STARTING_Y + ZONE_RANGE, true));
         zones.add(new Zone(ZONE4_STARTING_Y, ZONE4_STARTING_Y + ZONE_RANGE, false));
     }
-    // Returns an available zone
-    public static Zone lookForRandomAvailableZone(){
+    // Returns an available zone for enemy
+    public static Zone lookForEnemyRandomAvailableZone(){
         Zone zone;
         do{
             zone = zones.get(Greenfoot.getRandomNumber(zones.size()));
-        }while(!zone.isAvailable());
+        }while(!zone.isAvailableForEnemy());
         return zone;
     }
     // Returns an available zone for number
-    public static Zone lookForRandomAvailableZoneForNumber(){
+    public static Zone lookForNumberRandomAvailableZone(){
         Zone zone;
         do{
             zone = zones.get(Greenfoot.getRandomNumber(zones.size()));
@@ -58,6 +58,6 @@ public class Zones  {
     // restarts the zones' availability
     public void restartZonesAvailability(){
         for(Zone zone: zones)
-            zone.setIsAvailable(true);
+            zone.restartAvailability();
     }
 }

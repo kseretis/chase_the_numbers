@@ -48,7 +48,8 @@ public class Level extends Screen{
         addObject(TouchingTimer.getInstance(), 0, 0);
         spawnLives();
         
-        // Spawn enemies
+        // Initialize Zones and spawn enemies
+        Zones.getInstance().restartZonesAvailability();
         spawnEnemies();
         setPaintOrder(Enemy.class, Number.class);
     }
@@ -62,7 +63,7 @@ public class Level extends Screen{
     private void setRandombackground(){
         setBackground(backgrounds.get(getRandomNumber(0, 2)));
     }
-    // Gets rancom number in range
+    // Gets random number in range
     private int getRandomNumber(int min, int max){
         return Greenfoot.getRandomNumber(max - min + 1) + min;
     }
@@ -93,9 +94,10 @@ public class Level extends Screen{
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
-        Zone availableZone = Zones.getInstance().lookForAvailableZone();
+        Zone availableZone = Zones.lookForRandomAvailableZone();
         addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
                             getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+        availableZone.setIsAvailable(false);
         /*while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
             removeObject(enemy);
             addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 

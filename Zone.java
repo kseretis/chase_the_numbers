@@ -1,8 +1,10 @@
 /**
- * Write a description of class Zone here.
+ * This class is created to hold the data for the model zone
+ * Contains the rabges of the positions X-Y
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Seretis Kleanthis
+ * @version 1
+ * @date 10/6/2022
  */
 public class Zone {
     private static int STARTING_X = 100;

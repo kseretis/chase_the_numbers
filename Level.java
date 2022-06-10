@@ -93,13 +93,14 @@ public class Level extends Screen{
     }
     // Spawn single enemy if it's not touching another one
     private void spawnEnemy(Enemy enemy){
-        addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                            getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-        while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
+        Zone availableZone = Zones.getInstance().lookForAvailableZone();
+        addObject(enemy, getRandomNumber(availableZone.getStartingX(), availableZone.getEndingX()), 
+                            getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+        /*while(enemy.isTouchingSameObject() || enemy.isTouchingBoard() || enemy.isTouchingHero()){
             removeObject(enemy);
             addObject(enemy, getRandomNumber(MINIMUM_X_SPAWING_POSITION, MAXIMUM_X_SPAWING_POSITION), 
-                                getRandomNumber(MINIMUM_Y_SPAWING_POSITION, MAXIMUM_Y_SPAWING_POSITION));
-        }
+                                getRandomNumber(availableZone.getStartingY(), availableZone.getEndingY()));
+        }*/
     }
     private void spawnLives(){
         int x = LIVES_X_POSITION;

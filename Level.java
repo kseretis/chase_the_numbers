@@ -12,14 +12,13 @@ import java.util.*;
 public class Level extends Screen{
     public static final int INIT_LEVEL = 1;
     public static final int MAXIMUM_LEVEL = 10;
-    private static final int MINIMUM_X_SPAWING_POSITION = 50;
-    private static final int MAXIMUM_X_SPAWING_POSITION = WIDTH - 50;
-    private static final int MINIMUM_Y_SPAWING_POSITION = 150;
-    private static final int MAXIMUM_Y_SPAWING_POSITION = HEIGHT - 200;
+    private static final String BACKGROUND_1 = "grass.png";
+    private static final String BACKGROUND_2 = "rock.png";
+    private static final String BACKGROUND_3 = "sand.png";
+    private static final String BACKGROUND_4 = "snow.png";
     private static final int LIVES_Y_POSITION = 65;
     private static final int LIVES_X_POSITION = 255;
     private static int level = INIT_LEVEL;
-    private static int numberOfTrophies = 5;
     private List<GreenfootImage> backgrounds = new ArrayList<>();
     /**
      * Constructor for objects of class Level
@@ -38,7 +37,7 @@ public class Level extends Screen{
         
         // Setup blackboard
         addObject(new Blackboard(), 640, 70);
-        addObject(MathProblem.getInstance(), 620, 65);
+        addObject(MathProblem.getInstance(), 625, 65);
         
         // Initialize Zones
         Zones.getInstance().restartZonesAvailability();
@@ -57,13 +56,14 @@ public class Level extends Screen{
     }
     // Reads backgrounds
     private void readBackgroundImgs(){
-        backgrounds.add(new GreenfootImage("grass.png"));
-        backgrounds.add(new GreenfootImage("sand.png"));
-        backgrounds.add(new GreenfootImage("rock.png"));
+        backgrounds.add(new GreenfootImage(BACKGROUND_1));
+        backgrounds.add(new GreenfootImage(BACKGROUND_2));
+        backgrounds.add(new GreenfootImage(BACKGROUND_3));
+        backgrounds.add(new GreenfootImage(BACKGROUND_4));
     }
     // Sets random background
     private void setRandombackground(){
-        setBackground(backgrounds.get(getRandomNumber(0, 2)));
+        setBackground(backgrounds.get(getRandomNumber(0, 3)));
     }
     // Gets random number in range
     private int getRandomNumber(int min, int max){

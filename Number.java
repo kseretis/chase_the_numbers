@@ -31,8 +31,4 @@ public class Number extends SmoothMover{
     public boolean isTheCorrectAnswer(int answer){
         return this.problem.getSolution() == answer ? true : false;
     }
-    // Touching same object getter    
-    public boolean isTouchingNumber(){
-        return isTouching(Number.class);
-    }
 }

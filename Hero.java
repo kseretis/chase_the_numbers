@@ -47,7 +47,7 @@ public class Hero extends SmoothMover{
     public void act(){
         checkKeyPress();
         checkIfTouchingEnemy();
-        lookForTrophy();
+        lookForNumber();
         checkIfLostAllLives();
     }
     // Checks which key is being pressed
@@ -89,7 +89,7 @@ public class Hero extends SmoothMover{
         return counter < MAXIMUM_IMAGE_NUMBER ? counter+1 : 0;
     }
     // Looking for ballons, if he finds one, he eat it
-    private void lookForTrophy(){
+    private void lookForNumber(){
         if(isTouching(Number.class)){  
             Number number = (Number)getOneIntersectingObject(Number.class);
             if(isLevelPassed(number))
@@ -102,6 +102,7 @@ public class Hero extends SmoothMover{
     private void startNextLevel(){
         Level.updateLevel();
         MathProblem.getInstance().updateMathProblem();
+        obtainLive();
         
         String sound = Level.getLevel() > Level.MAXIMUM_LEVEL ? WIN_SOUND : LEVEL_PASSED_SOUND;
         Screen newScreen = Level.getLevel() > Level.MAXIMUM_LEVEL ? new WinScreen() : new PreLevelScreen();
@@ -144,10 +145,6 @@ public class Hero extends SmoothMover{
     public List<Live> getLives(){
         return lives;
     }
-    // Get single live
-    public Live getLive(int index){
-        return lives.get(index);
-    }
     // Return how many lives left
     private int livesLeft(){
         int livesLeft = 0;
@@ -160,6 +157,13 @@ public class Hero extends SmoothMover{
     private void loseLive(){
         this.livesLeft--;
         lives.get(this.livesLeft).setIsFull(false);
+    }
+    // Obtain one live for the correct answer
+    private void obtainLive(){
+        if(livesLeft < MAXIMUM_LIVES){
+            lives.get(livesLeft).setIsFull(true);
+            livesLeft++;
+        }
     }
     // Checks the lives list if it's null or empty
     private boolean hasLostAllLives(){

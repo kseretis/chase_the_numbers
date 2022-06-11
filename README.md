@@ -16,4 +16,4 @@
 - Avoid the enemies
 - You have 3 lives, you lose one every time you touch an enemy but you gain on for every single correct answer
 
-![Untitled](https://user-images.githubusercontent.com/26447021/173193093-d06fb653-f385-4620-8207-e79a24efa12a.png)
+![Untitled](https://user-images.githubusercontent.com/26447021/173193332-a2c5a547-a8e1-4a0b-aa13-4c4bcbd6ad23.png)

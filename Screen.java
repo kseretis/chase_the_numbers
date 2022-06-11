@@ -22,5 +22,13 @@ public class Screen extends World implements ScreenActions{
     public void checkKeyDown(Screen newScreen){
         if(Greenfoot.isKeyDown("enter") || Greenfoot.isKeyDown("space"))
             Greenfoot.setWorld(newScreen);
-    }   
+    }
+    
+    public void restartGame(){
+        Timer.restartTimer();
+        Level.restartLevels();
+        MathProblem.restartMathProblem();
+        Hero.getInstance().resetHeroLives();
+        TouchingTimer.restartTimer();
+    }
 }

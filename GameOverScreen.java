@@ -13,16 +13,10 @@ public class GameOverScreen extends Screen{
      */
     public GameOverScreen(){    
         super(); 
-        restartLevel();
+        restartGame();
     }
     // Act
     public void act(){
         checkKeyDown(new Level());
-    }
-    // restart level
-    public void restartLevel(){
-        Timer.restartTimer();
-        Hero.getInstance().resetHeroLives();
-        TouchingTimer.restartTimer();
     }
 }

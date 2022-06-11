@@ -8,4 +8,5 @@
  */
 public interface ScreenActions  {
     public abstract void checkKeyDown(Screen newSreen);
+    public abstract void restartGame();
 }

@@ -6,6 +6,4 @@ comment1.target=GameOverScreen()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GameOverScreen\r\n
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ restartLevel()
-numComments=4
+numComments=3

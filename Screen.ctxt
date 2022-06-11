@@ -7,4 +7,6 @@ comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Screen\r\n
 comment2.params=newScreen
 comment2.target=void\ checkKeyDown(Screen)
 comment2.text=\r\n\ Implementing\ ScreenActions'\ methods\r\n
-numComments=3
+comment3.params=
+comment3.target=void\ restartGame()
+numComments=4

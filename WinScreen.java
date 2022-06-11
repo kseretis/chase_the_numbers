@@ -19,12 +19,4 @@ public class WinScreen extends Screen{
     public void act(){
         checkKeyDown(new Level());
     }
-    // Restart game
-    public void restartGame(){
-        Timer.restartTimer();
-        Level.restartLevels();
-        MathProblem.restartMathProblem();
-        Hero.getInstance().resetHeroLives();
-        TouchingTimer.restartTimer();
-    }
 }

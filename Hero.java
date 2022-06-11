@@ -123,7 +123,7 @@ public class Hero extends SmoothMover{
                 loseLive();
             }
         }
-        int transparency = TouchingTimer.isCountingDown() ? 50 : 255;
+        int transparency = TouchingTimer.isCountingDown() ? 100 : 255;
         getImage().setTransparency(transparency);
     }
     // touching enemy getter

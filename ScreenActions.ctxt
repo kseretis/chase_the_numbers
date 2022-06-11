@@ -3,4 +3,6 @@ comment0.target=ScreenActions
 comment0.text=\r\n\ This\ interface\ has\ been\ created\ to\ hold\ some\ basic\ actions\r\n\ that\ screens\ use\r\n\ \r\n\ @author\ Seretis\ Kleanthis\ \ \ \ \r\n\ @version\ 1\r\n\ @date\ 10/6/2022\r\n
 comment1.params=newSreen
 comment1.target=void\ checkKeyDown(Screen)
-numComments=2
+comment2.params=
+comment2.target=void\ restartGame()
+numComments=3

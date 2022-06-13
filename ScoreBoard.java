@@ -7,7 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 1
  * @date 8/6/2022
  */
-public class ScoreBoard extends Board{
+public class ScoreBoard extends Actor{
+    // Act
     public void act(){
         getImage().scale(160, 120);
     }
